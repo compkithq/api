@@ -1,0 +1,9 @@
+type Competition {
+  id: ID!
+  name: String
+}
+
+type Query {
+  competitions(limit: Int, offset: Int): [Competition]
+  competition(id: ID!): Competition
+}

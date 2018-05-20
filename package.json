@@ -1,0 +1,23 @@
+{
+  "name": "fme-graphql",
+  "version": "1.0.0",
+  "description": "GraphQL API for First Means Everything",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "dotenv -- nodemon -e node src",
+    "dev": "npm-run-all --parallel start playground",
+    "playground": "graphql playground"
+  },
+  "author": "Jonathan Steele",
+  "license": "MIT",
+  "dependencies": {
+    "graphql-yoga": "^1.6.1",
+    "mongoose": "^5.0.11"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^1.4.0",
+    "graphql-cli": "^2.15.8",
+    "nodemon": "^1.17.2",
+    "npm-run-all": "^4.1.2"
+  }
+}
