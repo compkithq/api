@@ -28,5 +28,20 @@ module.exports = {
         return e;
       }
     }
+  },
+
+  Competition: {
+    venue: async (root, args, ctx) => {
+      const { venue: id } = root;
+      const { db } = ctx;
+
+      try {
+        const venue = await db.Venue.findById(id).exec();
+
+        return venue;
+      } catch (e) {
+        return e;
+      }
+    }
   }
 };

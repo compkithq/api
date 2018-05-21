@@ -1,6 +1,13 @@
 type Competition {
   id: ID!
   name: String
+  venue: Venue
+}
+
+type Venue {
+  id: ID!
+  description: String
+  name: String
 }
 
 type Query {
