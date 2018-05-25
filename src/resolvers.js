@@ -1,9 +1,6 @@
 module.exports = {
   Query: {
-    competitions: async (root, args, ctx) => {
-      const { limit, offset } = args;
-      const { db } = ctx;
-
+    competitions: async (root, { limit, offset }, { db }) => {
       try {
         const competitions = await db.Competition.find({})
           .limit(limit)
@@ -16,10 +13,7 @@ module.exports = {
       }
     },
 
-    competition: async (root, args, ctx) => {
-      const { id } = args;
-      const { db } = ctx;
-
+    competition: async (root, { id }, { db }) => {
       try {
         const competition = await db.Competition.findById(id).exec();
 
@@ -31,10 +25,7 @@ module.exports = {
   },
 
   Competition: {
-    venue: async (root, args, ctx) => {
-      const { venue: id } = root;
-      const { loaders } = ctx;
-
+    venue: async ({ venue: id }, args, { loaders }) => {
       try {
         const venue = await loaders.venueLoader.load(id);
 
