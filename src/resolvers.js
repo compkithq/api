@@ -33,10 +33,10 @@ module.exports = {
   Competition: {
     venue: async (root, args, ctx) => {
       const { venue: id } = root;
-      const { db } = ctx;
+      const { loaders } = ctx;
 
       try {
-        const venue = await db.Venue.findById(id).exec();
+        const venue = await loaders.venueLoader.load(id);
 
         return venue;
       } catch (e) {
