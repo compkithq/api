@@ -14,4 +14,6 @@ type Venue {
 type Query {
   competitions(limit: Int, offset: Int): [Competition]
   competition(id: ID!): Competition
+  venues(limit: Int, offset: Int): [Venue]
+  venue(id: ID!): Venue
 }
