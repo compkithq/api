@@ -1,8 +1,8 @@
-const { GraphQLServer } = require('graphql-yoga');
+const { GraphQLServer } = require('graphql-yoga')
 
-const db = require('./db');
-const resolvers = require('./resolvers');
-const loaders = require('./loaders');
+const db = require('./db')
+const resolvers = require('./resolvers')
+const loaders = require('./loaders')
 
 const server = new GraphQLServer({
   typeDefs: './src/schema.graphql',
@@ -10,8 +10,8 @@ const server = new GraphQLServer({
   context: req => ({
     ...req,
     db,
-    loaders
-  })
-});
+    loaders,
+  }),
+})
 
-server.start(() => console.log('Server is running on localhost:4000'));
+server.start(() => console.log('Server is running on localhost:4000'))
