@@ -4,6 +4,7 @@ const { Schema } = mongoose;
 module.exports = mongoose.model(
   'Venue',
   Schema({
-    name: 'String'
+    name: 'String',
+    competitions: [mongoose.Schema.Types.ObjectId]
   })
 );

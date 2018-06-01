@@ -6,6 +6,7 @@ type Competition {
 
 type Venue {
   id: ID!
+  competitions: [Competition]
   description: String
   name: String
 }

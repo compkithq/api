@@ -10,3 +10,12 @@ exports.venueLoader = new DataLoader(venueIds => {
     return venueIds.map(venueId => venuesById[venueId]);
   });
 });
+
+exports.competitionLoader = new DataLoader(async competitionIds => {
+  const competitions = await db.Competition.find({
+    _id: { $in: competitionIds }
+  }).exec();
+  const competitionsById = keyBy(competitions, '_id');
+
+  return competitionIds.map(competitionId => competitionsById[competitionId]);
+});
