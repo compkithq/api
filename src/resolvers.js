@@ -23,6 +23,18 @@ module.exports = {
       }
     },
 
+    leaderboards: async (root, { competitionId }, { db }) => {
+      try {
+        const leaderboards = await db.Leaderboard.find({
+          competition: { $in: competitionId },
+        }).exec()
+
+        return leaderboards
+      } catch (e) {
+        return e
+      }
+    },
+
     venues: async (root, { limit, offset }, { db }) => {
       try {
         const venues = await db.Venue.find({})
@@ -53,6 +65,23 @@ module.exports = {
         const venue = await venueLoader.load(id)
 
         return venue
+      } catch (e) {
+        return e
+      }
+    },
+  },
+
+  Leaderboard: {
+    competition: async (
+      { competition: id },
+      args,
+      { loaders: { competitionLoader } },
+    ) => {
+      try {
+        console.log(id)
+        const competition = await competitionLoader.load(id)
+
+        return competition
       } catch (e) {
         return e
       }

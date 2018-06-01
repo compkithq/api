@@ -2,10 +2,11 @@ const mongoose = require('./connection')
 const { Schema } = mongoose
 
 module.exports = mongoose.model(
-  'Competition',
+  'Leaderboard',
   Schema({
+    category: 'String',
+    competition: mongoose.Schema.Types.ObjectId,
+    gender: 'String',
     name: 'String',
-    leaderboards: [mongoose.Schema.Types.ObjectId],
-    venue: mongoose.Schema.Types.ObjectId,
   }),
 )
