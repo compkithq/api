@@ -48,9 +48,9 @@ module.exports = {
   },
 
   Competition: {
-    venue: async ({ venue: id }, args, { loaders }) => {
+    venue: async ({ venue: id }, args, { loaders: { venueLoader } }) => {
       try {
-        const venue = await loaders.venueLoader.load(id);
+        const venue = await venueLoader.load(id);
 
         return venue;
       } catch (e) {
