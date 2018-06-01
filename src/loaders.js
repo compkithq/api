@@ -3,12 +3,11 @@ const keyBy = require('lodash.keyby');
 
 const db = require('./db');
 
-exports.venueLoader = new DataLoader(venueIds => {
-  return db.Venue.find({ _id: { $in: venueIds } }).then(venues => {
-    const venuesById = keyBy(venues, '_id');
+exports.venueLoader = new DataLoader(async venueIds => {
+  const venues = await db.Venue.find({ _id: { $in: venueIds } }).exec();
+  const venuesById = keyBy(venues, '_id');
 
-    return venueIds.map(venueId => venuesById[venueId]);
-  });
+  return venueIds.map(venueId => venuesById[venueId]);
 });
 
 exports.competitionLoader = new DataLoader(async competitionIds => {
