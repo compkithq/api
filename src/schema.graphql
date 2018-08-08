@@ -1,9 +1,19 @@
 type Competition {
   id: ID!
   name: String
+  venue: Venue
+}
+
+type Venue {
+  id: ID!
+  competitions: [Competition]
+  description: String
+  name: String
 }
 
 type Query {
   competitions(limit: Int, offset: Int): [Competition]
   competition(id: ID!): Competition
+  venues(limit: Int, offset: Int): [Venue]
+  venue(id: ID!): Venue
 }
