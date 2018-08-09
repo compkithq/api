@@ -6,7 +6,6 @@ module.exports = mongoose.model(
   Schema({
     category: 'String',
     competition: mongoose.Schema.Types.ObjectId,
-    gender: 'String',
-    name: 'String',
-  }),
+    gender: 'String'
+  })
 )
