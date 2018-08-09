@@ -12,9 +12,18 @@ exports.venueLoader = new DataLoader(async venueIds => {
 
 exports.competitionLoader = new DataLoader(async competitionIds => {
   const competitions = await db.Competition.find({
-    _id: { $in: competitionIds },
+    _id: { $in: competitionIds }
   }).exec()
   const competitionsById = keyBy(competitions, '_id')
 
   return competitionIds.map(competitionId => competitionsById[competitionId])
+})
+
+exports.leaderboardLoader = new DataLoader(async leaderboardIds => {
+  const leaderboards = await db.Leaderboard.find({
+    _id: { $in: leaderboardIds }
+  }).exec()
+  const leaderboardsById = keyBy(leaderboards, '_id')
+
+  return leaderboardIds.map(leaderboardId => leaderboardsById[leaderboardId])
 })

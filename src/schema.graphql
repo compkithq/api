@@ -1,7 +1,15 @@
 type Competition {
   id: ID!
+  leaderboards: [Leaderboard]
   name: String
   venue: Venue
+}
+
+type Leaderboard {
+  id: ID!
+  category: String
+  competition: Competition
+  gender: String
 }
 
 type Venue {
@@ -14,6 +22,7 @@ type Venue {
 type Query {
   competitions(limit: Int, offset: Int): [Competition]
   competition(id: ID!): Competition
+  leaderboards(competitionId: ID!): [Leaderboard]
   venues(limit: Int, offset: Int): [Venue]
   venue(id: ID!): Venue
 }
