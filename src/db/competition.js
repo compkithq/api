@@ -6,6 +6,6 @@ module.exports = mongoose.model(
   Schema({
     name: 'String',
     leaderboards: [mongoose.Schema.Types.ObjectId],
-    venue: mongoose.Schema.Types.ObjectId,
-  }),
+    venue: mongoose.Schema.Types.ObjectId
+  })
 )

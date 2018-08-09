@@ -5,6 +5,6 @@ module.exports = mongoose.model(
   'Venue',
   Schema({
     name: 'String',
-    competitions: [mongoose.Schema.Types.ObjectId],
-  }),
+    competitions: [mongoose.Schema.Types.ObjectId]
+  })
 )
