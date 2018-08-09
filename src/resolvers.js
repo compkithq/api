@@ -92,7 +92,6 @@ module.exports = {
       { loaders: { competitionLoader } }
     ) => {
       try {
-        console.log(id)
         const competition = await competitionLoader.load(id)
 
         return competition
