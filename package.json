@@ -4,9 +4,11 @@
   "description": "GraphQL API for First Means Everything",
   "main": "src/index.js",
   "scripts": {
-    "start": "dotenv -- nodemon -e node src",
+    "deploy": "now --public && now alias",
     "dev": "npm-run-all --parallel start playground",
-    "playground": "graphql playground"
+    "now-start": "node src",
+    "playground": "graphql playground",
+    "start": "nodemon -e node -r dotenv/config src"
   },
   "author": "Jonathan Steele",
   "license": "MIT",
@@ -17,7 +19,7 @@
     "mongoose": "^5.0.11"
   },
   "devDependencies": {
-    "dotenv-cli": "^1.4.0",
+    "dotenv": "^6.0.0",
     "graphql-cli": "^2.16.5",
     "husky": "^1.0.0-rc.6",
     "nodemon": "^1.17.2",
@@ -28,6 +30,13 @@
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "now": {
+    "alias": "fme-graphql.now.sh",
+    "dotenv": true,
+    "env": {
+      "NODE_ENV": "production"
     }
   },
   "prettier": {
