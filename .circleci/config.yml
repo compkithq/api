@@ -18,7 +18,7 @@ jobs:
       - run:
           command: node -r dotenv/config src
           background: true
-      - run: npx apollo schema:check --endpoint=https://localhost:4000
+      - run: npx apollo schema:check --endpoint=http://localhost:4000
   publish_schema:
     docker:
       - image: circleci/node:latest
@@ -27,7 +27,7 @@ jobs:
       - restore_cache:
           keys:
             - nautic-{{ checksum "package.json" }}
-      - run: npx apollo schema:publish --endpoint=https://localhost:4000
+      - run: npx apollo schema:publish --endpoint=http://localhost:4000
 workflows:
   version: 2
   build:
