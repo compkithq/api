@@ -1,11 +1,13 @@
 const Competition = require('./competition')
 const Leaderboard = require('./leaderboard')
-const User = require('./user')
+const Query = require('./query')
+const Mutation = require('./mutation')
 const Venue = require('./venue')
 
 module.exports = {
   Competition,
   Leaderboard,
-  User,
+  Query,
+  Mutation,
   Venue
 }
