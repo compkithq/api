@@ -1,8 +1,8 @@
-const Competition = require('./competition')
-const Leaderboard = require('./leaderboard')
+const Competition = require('./query/competition')
+const Leaderboard = require('./query/leaderboard')
 const Query = require('./query')
 const Mutation = require('./mutation')
-const Venue = require('./venue')
+const Venue = require('./query/venue')
 
 module.exports = {
   Competition,
