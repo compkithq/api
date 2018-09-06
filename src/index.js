@@ -17,7 +17,10 @@ const server = new ApolloServer({
     loaders
   }),
   introspection: true,
-  playground: true
+  playground: true,
+  engine: {
+    apiKey: process.env.ENGINE_API_KEY
+  }
 })
 
 server.listen().then(({ url }) => {
