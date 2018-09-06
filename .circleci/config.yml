@@ -16,7 +16,7 @@ jobs:
             - node_modules
           key: fme-graphql-{{ checksum "package.json" }}
       - run:
-          command: npm run dev
+          command: node -r dotenv/config src
           background: true
       - run: npx apollo schema:check --endpoint=https://localhost:4000
   publish_schema:
