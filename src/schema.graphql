@@ -19,10 +19,18 @@ type Venue {
   name: String
 }
 
+type AuthToken {
+  token: String!
+}
+
 type Query {
   competitions(limit: Int, offset: Int): [Competition]
   competition(id: ID!): Competition
   leaderboards(competitionId: ID!): [Leaderboard]
   venues(limit: Int, offset: Int): [Venue]
   venue(id: ID!): Venue
+}
+
+type Mutation {
+  authenticate(email: String!, password: String!): AuthToken!
 }
