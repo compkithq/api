@@ -1,17 +1,25 @@
-const { GraphQLServer } = require('graphql-yoga')
+const { ApolloServer, gql } = require('apollo-server')
+const fs = require('fs')
 
 const db = require('./db')
 const resolvers = require('./resolvers')
 const loaders = require('./loaders')
+const typeDefs = gql`
+  ${fs.readFileSync(__dirname.concat('/schema.graphql'), 'utf8')}
+`
 
-const server = new GraphQLServer({
-  typeDefs: './src/schema.graphql',
+const server = new ApolloServer({
+  typeDefs,
   resolvers,
   context: req => ({
     ...req,
     db,
     loaders
-  })
+  }),
+  introspection: true,
+  playground: true
 })
 
-server.start(() => console.log('Server is running on localhost:4000'))
+server.listen().then(({ url }) => {
+  console.log(`Server is running on ${url}`)
+})
