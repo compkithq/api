@@ -1,0 +1,41 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - fme-graphql-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - fme-graphql-
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: fme-graphql-{{ checksum "package.json" }}
+      - run:
+          command: node -r dotenv/config src
+          background: true
+      - run: npx apollo schema:check --endpoint=http://localhost:4000
+  publish_schema:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - nautic-{{ checksum "package.json" }}
+      - run: npx apollo schema:publish --endpoint=http://localhost:4000
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
+      - publish_schema:
+          filters:
+            branches:
+              only: master
+          requires:
+            - build
