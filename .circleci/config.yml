@@ -26,7 +26,10 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - nautic-{{ checksum "package.json" }}
+            - fme-graphql-{{ checksum "package.json" }}
+      - run:
+          command: node -r dotenv/config src
+          background: true
       - run: npx apollo schema:publish --endpoint=http://localhost:4000
 workflows:
   version: 2
