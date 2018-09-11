@@ -4,7 +4,6 @@
   "description": "GraphQL API for First Means Everything",
   "main": "src/index.js",
   "scripts": {
-    "deploy": "now --public && now alias",
     "dev": "nodemon -e node -r dotenv/config src dotenv_config_path=.env.development",
     "start": "node src"
   },
