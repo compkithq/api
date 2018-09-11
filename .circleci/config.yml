@@ -31,6 +31,12 @@ jobs:
           command: node -r dotenv/config src
           background: true
       - run: npx apollo schema:publish --endpoint=http://localhost:4000
+  deploy:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run: npm run deploy
 workflows:
   version: 2
   build:
@@ -42,3 +48,9 @@ workflows:
               only: master
           requires:
             - build
+  release:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only: master
