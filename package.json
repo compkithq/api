@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "deploy": "now --public && now alias",
-    "dev": "nodemon -e node -r dotenv/config src",
+    "dev": "nodemon -e node -r dotenv/config src dotenv_config_path=.env.development",
     "start": "node src"
   },
   "author": "Jonathan Steele",
@@ -15,6 +15,7 @@
     "apollo-server": "^2.0.7",
     "bcryptjs": "^2.4.3",
     "dataloader": "^1.4.0",
+    "dotenv": "^6.0.0",
     "graphql": "^14.0.0",
     "jsonwebtoken": "^8.3.0",
     "lodash.keyby": "^4.6.0",
@@ -22,7 +23,6 @@
     "validator": "^10.7.1"
   },
   "devDependencies": {
-    "dotenv": "^6.0.0",
     "husky": "^1.0.0-rc.6",
     "nodemon": "^1.17.2",
     "prettier": "^1.14.2",
@@ -35,7 +35,7 @@
   },
   "now": {
     "alias": "fme-graphql.now.sh",
-    "dotenv": true,
+    "dotenv": ".env.production",
     "env": {
       "NODE_ENV": "production"
     }
