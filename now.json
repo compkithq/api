@@ -1,7 +1,9 @@
 {
   "alias": "fme-graphql.now.sh",
-  "dotenv": ".env.production",
   "env": {
-    "NODE_ENV": "production"
+    "NODE_ENV": "production",
+    "ENGINE_API_KEY": "@fme-graphql-apollo-engine-key",
+    "MONGO_URL": "@fme-graphql-mongo-url",
+    "JWT_PASSPHRASE": "@fme-graphql-jwt-passphrase"
   }
 }
