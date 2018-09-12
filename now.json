@@ -1,0 +1,7 @@
+{
+  "alias": "fme-graphql.now.sh",
+  "dotenv": ".env.production",
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
