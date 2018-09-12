@@ -32,13 +32,6 @@
       "pre-commit": "pretty-quick --staged"
     }
   },
-  "now": {
-    "alias": "fme-graphql.now.sh",
-    "dotenv": ".env.production",
-    "env": {
-      "NODE_ENV": "production"
-    }
-  },
   "prettier": {
     "semi": false,
     "singleQuote": true,
