@@ -1,10 +1,10 @@
 {
-  "alias": "fme-graphql.now.sh",
+  "alias": "graphql.firstmeanseverything.com",
   "env": {
     "NODE_ENV": "production",
     "ENGINE_API_KEY": "@fme-graphql-apollo-engine-key",
-    "MONGO_URL": "@fme-graphql-mongo-url",
-    "JWT_PASSPHRASE": "@fme-graphql-jwt-passphrase"
+    "JWT_PASSPHRASE": "@fme-jwt-passphrase",
+    "MONGO_URL": "@fme-mongo-url"
   },
   "name": "fme-graphql",
   "scale": {
