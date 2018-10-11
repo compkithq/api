@@ -6,5 +6,11 @@
     "MONGO_URL": "@fme-graphql-mongo-url",
     "JWT_PASSPHRASE": "@fme-graphql-jwt-passphrase"
   },
-  "name": "fme-graphql"
+  "name": "fme-graphql",
+  "scale": {
+    "bru1": {
+      "min": 1,
+      "max": 1
+    }
+  }
 }
