@@ -1,5 +1,5 @@
 {
-  "alias": "fme-graphql.now.sh",
+  "alias": "graphql.firstmeanseverything.com",
   "env": {
     "NODE_ENV": "production",
     "ENGINE_API_KEY": "@fme-graphql-apollo-engine-key",
