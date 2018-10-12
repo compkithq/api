@@ -37,6 +37,8 @@ type Query {
   leaderboards(competitionId: ID!): [Leaderboard]
   venues(limit: Int, offset: Int): [Venue]
   venue(id: ID!): Venue
+  workouts(leaderboardId: ID!): [Workout]
+  workout(id: ID!): Workout
 }
 
 type Mutation {
