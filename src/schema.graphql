@@ -19,6 +19,14 @@ type Venue {
   name: String
 }
 
+type Workout {
+  id: ID!
+  description: String
+  leaderboard: Leaderboard
+  name: String
+  type: WORKOUT_TYPE
+}
+
 type AuthToken {
   token: String!
 }
@@ -33,4 +41,10 @@ type Query {
 
 type Mutation {
   authenticate(email: String!, password: String!): AuthToken!
+}
+
+enum WORKOUT_TYPE {
+  amrap
+  time
+  weight
 }
