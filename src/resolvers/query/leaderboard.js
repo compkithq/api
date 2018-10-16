@@ -11,5 +11,15 @@ module.exports = {
     } catch (e) {
       return e
     }
+  },
+
+  workouts: async ({ workouts: ids }, args, { loaders: { workoutLoader } }) => {
+    try {
+      const workout = await workoutLoader.loadMany(ids)
+
+      return workout
+    } catch (e) {
+      return e
+    }
   }
 }
