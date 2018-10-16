@@ -7,6 +7,7 @@ module.exports = mongoose.model(
     description: 'String',
     leaderboard: mongoose.Schema.Types.ObjectId,
     name: 'String',
+    scores: [mongoose.Schema.Types.ObjectId],
     type: 'String'
   })
 )

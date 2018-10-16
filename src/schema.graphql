@@ -33,6 +33,7 @@ type Workout {
   description: String
   leaderboard: Leaderboard
   name: String
+  scores: [Score]
   type: WORKOUT_TYPE
 }
 
