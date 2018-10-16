@@ -45,6 +45,7 @@ type Query {
   competitions(limit: Int, offset: Int): [Competition]
   competition(id: ID!): Competition
   leaderboards(competitionId: ID!): [Leaderboard]
+  scores(workoutId: ID!): [Score]
   venues(limit: Int, offset: Int): [Venue]
   venue(id: ID!): Venue
   workouts(leaderboardId: ID!): [Workout]
