@@ -12,6 +12,14 @@ type Leaderboard {
   gender: String
 }
 
+type Score {
+  id: ID!
+  rank: Int
+  scaled: Boolean
+  value: Int
+  workout: Workout
+}
+
 type Venue {
   id: ID!
   competitions: [Competition]
