@@ -26,7 +26,7 @@ module.exports = {
         .sort(scoreSortParams({ sort, dir }))
         .exec()
 
-      return scores.map((score, index) => ({
+      return scores.map(score => ({
         ...score.toObject({ virtuals: true }),
         rank: calculateRank({
           scores,

@@ -10,7 +10,7 @@ module.exports = {
 
       const { type: workoutType } = await db.Workout.findById(workoutId)
 
-      return scores.map((score, index) => ({
+      return scores.map(score => ({
         ...score.toObject({ virtuals: true }),
         rank: calculateRank({
           scores,
