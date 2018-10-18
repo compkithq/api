@@ -12,12 +12,13 @@ module.exports = ({ scores, score, type }) => {
       return b.value - a.value
     })
 
-  const currentScore = scoreValues.map(score => score.value).indexOf(score)
-  const previousScore = scoreValues[currentScore - 1]
+  const currentScoreIndex = scoreValues.map(score => score.value).indexOf(score)
+  const previousScoreIndex = scoreValues[currentScoreIndex - 1]
 
-  if (!previousScore) return currentScore + 1
+  if (!previousScoreIndex) return currentScoreIndex + 1
 
-  if (previousScore['value'] === currentScore['value']) return currentScore
+  if (previousScoreIndex['value'] === currentScoreIndex['value'])
+    return currentScoreIndex
 
-  return currentScore + 1
+  return currentScoreIndex + 1
 }
