@@ -1,4 +1,4 @@
-const calculateRank = require('../../utils/calculate-rank')
+const calculateScoreRank = require('../../utils/calculate-score-rank')
 const scoreSortParams = require('../../utils/score-sort-params')
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
 
       return scores.map(score => ({
         ...score.toObject({ virtuals: true }),
-        rank: calculateRank({
+        rank: calculateScoreRank({
           scores,
           score: score.value,
           workoutType
