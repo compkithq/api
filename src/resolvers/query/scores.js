@@ -23,7 +23,7 @@ module.exports = {
         rank: calculateRank({
           scores,
           score: score.value,
-          type: workoutType
+          workoutType
         })
       }))
     } catch (e) {

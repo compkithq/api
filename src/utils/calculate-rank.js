@@ -1,4 +1,4 @@
-module.exports = ({ scores, score, type }) => {
+module.exports = ({ scores, score, workoutType }) => {
   const scoreValues = scores
     .map(({ scaled, value }) => ({
       value,
@@ -7,7 +7,7 @@ module.exports = ({ scores, score, type }) => {
     .sort((a, b) => {
       if (a.scaled != b.scaled) return a.scaled ? 1 : -1
 
-      if (type === 'time') return a.value - b.value
+      if (workoutType === 'time') return a.value - b.value
 
       return b.value - a.value
     })
