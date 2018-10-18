@@ -1,11 +1,20 @@
 const calculateRank = require('../../utils/calculate-rank')
 
 module.exports = {
-  scores: async (root, { workoutId }, { db }) => {
+  scores: async (root, { workoutId, sort, dir }, { db }) => {
     try {
-      const scores = await db.Score.find({
-        workout: { $in: workoutId }
-      }).exec()
+      let scaledSort = {}
+
+      if (sort === 'rank')
+        scaledSort = {
+          scaled: dir === 'asc' ? 1 : -1
+        }
+
+      const sortField = sort === 'rank' ? 'value' : sort
+
+      const scores = await db.Score.find({ workout: { $in: workoutId } })
+        .sort({ ...scaledSort, [sortField]: dir === 'asc' ? 1 : -1 })
+        .exec()
 
       const { type: workoutType } = await db.Workout.findById(workoutId)
 

@@ -33,7 +33,7 @@ type Workout {
   description: String
   leaderboard: Leaderboard
   name: String
-  scores: [Score]
+  scores(sort: SCORES_SORT, dir: SORT_DIR): [Score]
   type: WORKOUT_TYPE
 }
 
@@ -45,7 +45,7 @@ type Query {
   competitions(limit: Int, offset: Int): [Competition]
   competition(id: ID!): Competition
   leaderboards(competitionId: ID!): [Leaderboard]
-  scores(workoutId: ID!): [Score]
+  scores(workoutId: ID!, sort: SCORES_SORT, dir: SORT_DIR): [Score]
   venues(limit: Int, offset: Int): [Venue]
   venue(id: ID!): Venue
   workouts(leaderboardId: ID!): [Workout]
@@ -60,4 +60,15 @@ enum WORKOUT_TYPE {
   amrap
   time
   weight
+}
+
+enum SCORES_SORT {
+  rank
+  scaled
+  value
+}
+
+enum SORT_DIR {
+  asc
+  desc
 }
