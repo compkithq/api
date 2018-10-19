@@ -13,6 +13,7 @@ type Competition {
 
 type Leaderboard {
   id: ID!
+  athletes: [Athlete]
   category: String
   competition: Competition
   gender: String
