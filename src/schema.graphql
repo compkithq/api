@@ -1,3 +1,9 @@
+type Athlete {
+  id: ID!
+  box: String
+  name: String
+}
+
 type Competition {
   id: ID!
   leaderboards: [Leaderboard]
@@ -42,6 +48,8 @@ type AuthToken {
 }
 
 type Query {
+  athletes(limit: Int, offset: Int): [Athlete]
+  athlete(id: ID!): Athlete
   competitions(limit: Int, offset: Int): [Competition]
   competition(id: ID!): Competition
   leaderboards(competitionId: ID!): [Leaderboard]

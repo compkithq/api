@@ -1,12 +1,14 @@
 const mongoose = require('./connection')
 const { Schema } = mongoose
 
-module.exports = mongoose.model(
-  'User',
+const User = require('./user')
+
+module.exports = User.discriminator(
+  'Athlete',
   Schema(
     {
-      email: 'String',
-      password: 'String'
+      box: 'String',
+      name: 'String'
     },
     { discriminatorKey: 'kind' }
   )
