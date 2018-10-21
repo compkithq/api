@@ -23,7 +23,7 @@ module.exports = {
   ) => {
     try {
       const scores = await db.Score.find({ _id: { $in: scoreIds } })
-        .sort(scoreSortParams({ sort, dir }))
+        .sort(scoreSortParams({ sort, dir, workoutType }))
         .exec()
 
       return scores.map(score => ({
