@@ -2,6 +2,7 @@ type Athlete {
   id: ID!
   box: String
   name: String
+  scores: [Score]
 }
 
 type Competition {

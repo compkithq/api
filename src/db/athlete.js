@@ -8,7 +8,8 @@ module.exports = User.discriminator(
   Schema(
     {
       box: 'String',
-      name: 'String'
+      name: 'String',
+      scores: [mongoose.Schema.Types.ObjectId]
     },
     { discriminatorKey: 'kind' }
   )
