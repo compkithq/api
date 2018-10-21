@@ -9,5 +9,15 @@ module.exports = {
     } catch (e) {
       return e
     }
+  },
+
+  leaderboard: async (root, { id }, { db }) => {
+    try {
+      const leaderboard = await db.Leaderboard.findById(id).exec()
+
+      return leaderboard
+    } catch (e) {
+      return e
+    }
   }
 }
