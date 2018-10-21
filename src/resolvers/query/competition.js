@@ -5,9 +5,9 @@ module.exports = {
     { loaders: { leaderboardLoader } }
   ) => {
     try {
-      const leaderboard = await leaderboardLoader.loadMany(ids)
+      const leaderboards = await leaderboardLoader.loadMany(ids)
 
-      return leaderboard
+      return leaderboards
     } catch (e) {
       return e
     }

@@ -3,8 +3,11 @@ const { Schema } = mongoose
 
 module.exports = mongoose.model(
   'User',
-  Schema({
-    email: 'String',
-    password: 'String'
-  })
+  Schema(
+    {
+      email: 'String',
+      password: 'String'
+    },
+    { discriminatorKey: 'kind' }
+  )
 )

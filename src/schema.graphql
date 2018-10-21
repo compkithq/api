@@ -1,3 +1,10 @@
+type Athlete {
+  id: ID!
+  box: String
+  name: String
+  scores: [Score]
+}
+
 type Competition {
   id: ID!
   leaderboards: [Leaderboard]
@@ -7,6 +14,7 @@ type Competition {
 
 type Leaderboard {
   id: ID!
+  athletes: [Athlete]
   category: String
   competition: Competition
   gender: String
@@ -15,6 +23,7 @@ type Leaderboard {
 
 type Score {
   id: ID!
+  athlete: Athlete
   rank: Int
   scaled: Boolean
   value: Int
@@ -42,6 +51,8 @@ type AuthToken {
 }
 
 type Query {
+  athletes(limit: Int, offset: Int): [Athlete]
+  athlete(id: ID!): Athlete
   competitions(limit: Int, offset: Int): [Competition]
   competition(id: ID!): Competition
   leaderboards(competitionId: ID!): [Leaderboard]
