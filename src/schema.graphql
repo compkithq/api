@@ -43,6 +43,7 @@ type Workout {
   id: ID!
   description: String
   leaderboard: Leaderboard
+  standards: String
   name: String
   scores(sort: SCORES_SORT, dir: SORT_DIR): [Score]
   type: WORKOUT_TYPE
