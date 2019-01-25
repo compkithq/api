@@ -18,7 +18,7 @@ type Leaderboard {
   category: String
   competition: Competition
   division: LEADERBOARD_DIVISION
-  gender: String
+  gender: LEADERBOARD_GENDER
   name: String
   workouts: [Workout]
 }
@@ -74,6 +74,11 @@ type Mutation {
 enum LEADERBOARD_DIVISION {
   rx
   scaled
+}
+
+enum LEADERBOARD_GENDER {
+  female
+  male
 }
 
 enum WORKOUT_TYPE {
