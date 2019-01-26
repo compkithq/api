@@ -33,6 +33,11 @@ type Score {
   workout: Workout
 }
 
+type Scoreboard {
+  athletes: [ScoreboardAthlete]
+  workouts: [Workout]
+}
+
 type Venue {
   id: ID!
   competitions: [Competition]
@@ -61,6 +66,7 @@ type Query {
   competition(id: ID!): Competition
   leaderboards(competitionId: ID!): [Leaderboard]
   leaderboard(id: ID!): Leaderboard
+  scoreboard(leaderboardId: ID!): Scoreboard
   scores(workoutId: ID!, sort: SCORES_SORT, dir: SORT_DIR): [Score]
   venues(limit: Int, offset: Int): [Venue]
   venue(id: ID!): Venue
