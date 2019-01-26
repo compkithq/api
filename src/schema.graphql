@@ -1,7 +1,19 @@
-type Athlete {
+interface Athlete {
+  box: String
+  name: String
+  scores: [Score]
+}
+
+type RegularAthlete implements Athlete {
   id: ID!
   box: String
   leaderboards: [Leaderboard]
+  name: String
+  scores: [Score]
+}
+
+type ScoreboardAthlete implements Athlete {
+  box: String
   name: String
   scores: [Score]
 }
@@ -15,7 +27,7 @@ type Competition {
 
 type Leaderboard {
   id: ID!
-  athletes: [Athlete]
+  athletes: [RegularAthlete]
   category: String
   competition: Competition
   division: LEADERBOARD_DIVISION
@@ -26,7 +38,7 @@ type Leaderboard {
 
 type Score {
   id: ID!
-  athlete: Athlete
+  athlete: RegularAthlete
   rank: Int
   scaled: Boolean
   value: Int
@@ -60,8 +72,8 @@ type AuthToken {
 }
 
 type Query {
-  athletes(limit: Int, offset: Int): [Athlete]
-  athlete(id: ID!): Athlete
+  athletes(limit: Int, offset: Int): [RegularAthlete]
+  athlete(id: ID!): RegularAthlete
   competitions(limit: Int, offset: Int): [Competition]
   competition(id: ID!): Competition
   leaderboards(competitionId: ID!): [Leaderboard]
