@@ -1,6 +1,7 @@
 type Athlete {
   id: ID!
   box: String
+  leaderboards: [Leaderboard]
   name: String
   scores: [Score]
 }
