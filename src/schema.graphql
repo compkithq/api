@@ -17,7 +17,9 @@ type Leaderboard {
   athletes: [Athlete]
   category: String
   competition: Competition
-  gender: String
+  division: LEADERBOARD_DIVISION
+  gender: LEADERBOARD_GENDER
+  name: String
   workouts: [Workout]
 }
 
@@ -41,6 +43,7 @@ type Workout {
   id: ID!
   description: String
   leaderboard: Leaderboard
+  standards: String
   name: String
   scores(sort: SCORES_SORT, dir: SORT_DIR): [Score]
   type: WORKOUT_TYPE
@@ -66,6 +69,16 @@ type Query {
 
 type Mutation {
   authenticate(email: String!, password: String!): AuthToken!
+}
+
+enum LEADERBOARD_DIVISION {
+  rx
+  scaled
+}
+
+enum LEADERBOARD_GENDER {
+  female
+  male
 }
 
 enum WORKOUT_TYPE {
