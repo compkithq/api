@@ -8,7 +8,13 @@ const Venue = require('./query/venue')
 const Workout = require('./query/workout')
 
 module.exports = {
-  Athlete,
+  Athlete: {
+    ...Athlete,
+
+    __resolveType() {
+      return null
+    }
+  },
   Competition,
   Leaderboard,
   Query,

@@ -8,6 +8,7 @@ module.exports = User.discriminator(
   Schema(
     {
       box: 'String',
+      leaderboards: [mongoose.Schema.Types.ObjectId],
       name: 'String',
       scores: [mongoose.Schema.Types.ObjectId]
     },
