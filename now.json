@@ -7,6 +7,7 @@
     "MONGO_URL": "@fme-mongo-url"
   },
   "name": "fme-graphql",
+  "public": true,
   "scale": {
     "bru1": {
       "min": 1,
