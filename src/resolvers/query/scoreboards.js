@@ -49,7 +49,7 @@ module.exports = {
                 ...newScore.toObject({
                   virtuals: true
                 }),
-                rank: leaderboardAthletes.length - allWorkoutScores.length
+                rank: allWorkoutScores.length + 1
               }
             })
           }
