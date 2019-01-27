@@ -4,7 +4,7 @@ const scoreSortParams = require('../../utils/score-sort-params')
 module.exports = {
   scores: async (root, { workoutId, sort, dir }, { db }) => {
     try {
-      const { type: workoutType } = await db.Workout.findById(workoutId)
+      const { type: workoutType } = await db.Workout.findById(workoutId).exec()
       const scores = await db.Score.find({ workout: { $in: workoutId } })
         .sort(scoreSortParams({ sort, dir, workoutType }))
         .exec()
