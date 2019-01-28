@@ -7,7 +7,6 @@ const Leaderboard = require('./query/leaderboard')
 const Query = require('./query')
 const Mutation = require('./mutation')
 const Score = require('./query/score')
-const Venue = require('./query/venue')
 const Workout = require('./query/workout')
 
 module.exports = {
@@ -39,6 +38,5 @@ module.exports = {
   Query,
   Mutation,
   Score,
-  Venue,
   Workout
 }
