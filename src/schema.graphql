@@ -28,8 +28,14 @@ type ScoreboardAthlete implements Athlete {
 
 type Competition {
   id: ID!
+  finalsDate: Date
   leaderboards: [Leaderboard]
   name: String
+  qualifiersEndDate: Date
+  qualifiersStartDate: Date
+  registrationEndDate: Date
+  registrationStartDate: Date
+  slug: String
   venue: Venue
 }
 
@@ -60,8 +66,9 @@ type Scoreboard {
 
 type Venue {
   id: ID!
-  competitions: [Competition]
-  description: String
+  address: String
+  latitude: String
+  longitude: String
   name: String
 }
 
@@ -84,6 +91,7 @@ type Query {
   athlete(id: ID!): RegularAthlete
   competitions(limit: Int, offset: Int): [Competition]
   competition(id: ID!): Competition
+  getCompetitionBySlug(slug: String!): Competition
   leaderboards(competitionId: ID!): [Leaderboard]
   leaderboard(id: ID!): Leaderboard
   scoreboard(leaderboardId: ID!): Scoreboard
