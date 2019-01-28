@@ -4,7 +4,9 @@ const { Schema } = mongoose
 module.exports = mongoose.model(
   'Venue',
   Schema({
-    name: 'String',
-    competitions: [mongoose.Schema.Types.ObjectId]
+    address: 'String',
+    latitude: 'String',
+    longitude: 'String',
+    name: 'String'
   })
 )
