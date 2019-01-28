@@ -4,6 +4,12 @@ interface Athlete {
   scores: [Score]
 }
 
+input CreateScoreInput {
+  athlete: ID!
+  value: Float
+  workout: ID!
+}
+
 scalar Date
 
 type RegularAthlete implements Athlete {
@@ -41,8 +47,8 @@ type Leaderboard {
 type Score {
   id: ID!
   athlete: RegularAthlete
+  createdAt: Date
   rank: Int
-  scaled: Boolean
   value: Int
   workout: Workout
 }
@@ -90,6 +96,7 @@ type Query {
 
 type Mutation {
   authenticate(email: String!, password: String!): AuthToken!
+  createWorkoutScore(score: CreateScoreInput): Score!
 }
 
 enum LEADERBOARD_DIVISION {

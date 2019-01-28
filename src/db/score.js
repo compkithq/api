@@ -4,7 +4,8 @@ const { Schema } = mongoose
 module.exports = mongoose.model(
   'Score',
   Schema({
-    scaled: 'Boolean',
+    athlete: mongoose.Schema.Types.ObjectId,
+    createdAt: 'Date',
     value: 'Number',
     workout: mongoose.Schema.Types.ObjectId
   })
