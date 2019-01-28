@@ -55,7 +55,7 @@ type Score {
   athlete: RegularAthlete
   createdAt: Date
   rank: Int
-  value: Int
+  value: Float
   workout: Workout
 }
 
