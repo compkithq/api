@@ -4,6 +4,8 @@ interface Athlete {
   scores: [Score]
 }
 
+scalar Date
+
 type RegularAthlete implements Athlete {
   id: ID!
   box: String
