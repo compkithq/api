@@ -20,5 +20,17 @@ module.exports = {
     } catch (e) {
       return e
     }
+  },
+
+  getCompetitionBySlug: async (root, { slug }, { db }) => {
+    try {
+      const competition = await db.Competition.findOne({
+        slug: { $eq: slug }
+      }).exec()
+
+      return competition
+    } catch (e) {
+      return e
+    }
   }
 }
