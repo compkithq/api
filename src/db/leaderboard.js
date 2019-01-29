@@ -10,6 +10,7 @@ module.exports = mongoose.model(
     division: 'String',
     gender: 'String',
     name: 'String',
+    tickets: [{ type: 'String' }],
     workouts: [mongoose.Schema.Types.ObjectId]
   })
 )

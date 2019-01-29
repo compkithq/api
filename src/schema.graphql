@@ -10,6 +10,13 @@ input CreateScoreInput {
   workout: ID!
 }
 
+input LeaderboardTicketsInput {
+  age: Int
+  competition: ID!
+  division: LEADERBOARD_DIVISION
+  gender: LEADERBOARD_GENDER
+}
+
 scalar Date
 
 type RegularAthlete implements Athlete {
@@ -64,6 +71,17 @@ type Scoreboard {
   workouts: [Workout]
 }
 
+type Ticket {
+  id: ID!
+  active: Boolean
+  currency: String
+  name: String
+  price: Int
+  quantity: Int
+  release: TICKET_RELEASE
+  type: TICKET_TYPE
+}
+
 type Venue {
   id: ID!
   address: String
@@ -92,6 +110,7 @@ type Query {
   competitions(limit: Int, offset: Int): [Competition]
   competition(id: ID!): Competition
   getCompetitionBySlug(slug: String!): Competition
+  getLeaderboardTickets(leaderboard: LeaderboardTicketsInput): [Ticket]
   leaderboards(competitionId: ID!): [Leaderboard]
   leaderboard(id: ID!): Leaderboard
   scoreboard(leaderboardId: ID!): Scoreboard
@@ -132,4 +151,15 @@ enum SCORES_SORT {
 enum SORT_DIR {
   asc
   desc
+}
+
+enum TICKET_RELEASE {
+  early
+  standard
+}
+
+enum TICKET_TYPE {
+  bucket
+  finite
+  infinite
 }
