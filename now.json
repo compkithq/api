@@ -4,7 +4,8 @@
     "NODE_ENV": "production",
     "ENGINE_API_KEY": "@fme-graphql-apollo-engine-key",
     "JWT_PASSPHRASE": "@fme-jwt-passphrase",
-    "MONGO_URL": "@fme-mongo-url"
+    "MONGO_URL": "@fme-mongo-url",
+    "STRIPE_KEY": "@fme-stripe-key"
   },
   "name": "fme-graphql",
   "public": true,
