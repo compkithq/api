@@ -1,5 +1,7 @@
 const { ApolloServer, gql } = require('apollo-server')
 const fs = require('fs')
+
+const postmark = require('postmark')
 const stripe = require('stripe')(process.env.STRIPE_KEY)
 
 const db = require('./db')
@@ -16,6 +18,7 @@ const server = new ApolloServer({
     ...req,
     db,
     loaders,
+    postmark: new postmark.ServerClient(process.env.POSTMARK_KEY),
     stripe
   }),
   introspection: true,

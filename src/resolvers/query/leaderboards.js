@@ -23,26 +23,20 @@ module.exports = {
     }
   },
 
-  getLeaderboardTickets: async (
+  getRelevantLeaderboard: async (
     root,
-    { leaderboard: { age, competition, division, gender } },
-    { db, stripe }
+    { criteria: { age, competition, division, gender } },
+    { db }
   ) => {
     try {
-      const { tickets: ids } = await db.Leaderboard.findOne({
+      const leaderboard = await db.Leaderboard.findOne({
         category: athleteCompetitionCategory({ age }),
         competition,
         division,
         gender
       })
 
-      const { data: tickets } = await stripe.skus.list({ ids: [...ids] })
-
-      return tickets.map(({ attributes, inventory, ...rest }) => ({
-        ...rest,
-        ...attributes,
-        ...inventory
-      }))
+      return leaderboard
     } catch (e) {
       return e
     }

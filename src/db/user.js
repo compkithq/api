@@ -6,7 +6,8 @@ module.exports = mongoose.model(
   Schema(
     {
       email: 'String',
-      password: 'String'
+      password: 'String',
+      stripeID: 'String'
     },
     { discriminatorKey: 'kind' }
   )

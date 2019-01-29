@@ -4,17 +4,25 @@ interface Athlete {
   scores: [Score]
 }
 
+input CompetitionRegistrationInput {
+  currency: String!
+  email: String!
+  leaderboard: ID!
+  ticket: ID!
+  token: String!
+}
+
 input CreateScoreInput {
   athlete: ID!
   value: Float
   workout: ID!
 }
 
-input LeaderboardTicketsInput {
-  age: Int
+input RelevantLeaderboardInput {
+  age: Int!
   competition: ID!
-  division: LEADERBOARD_DIVISION
-  gender: LEADERBOARD_GENDER
+  division: LEADERBOARD_DIVISION!
+  gender: LEADERBOARD_GENDER!
 }
 
 scalar Date
@@ -54,6 +62,7 @@ type Leaderboard {
   division: LEADERBOARD_DIVISION
   gender: LEADERBOARD_GENDER
   name: String
+  tickets: [Ticket]
   workouts: [Workout]
 }
 
@@ -110,7 +119,7 @@ type Query {
   competitions(limit: Int, offset: Int): [Competition]
   competition(id: ID!): Competition
   getCompetitionBySlug(slug: String!): Competition
-  getLeaderboardTickets(leaderboard: LeaderboardTicketsInput): [Ticket]
+  getRelevantLeaderboard(criteria: RelevantLeaderboardInput): Leaderboard
   leaderboards(competitionId: ID!): [Leaderboard]
   leaderboard(id: ID!): Leaderboard
   scoreboard(leaderboardId: ID!): Scoreboard
@@ -122,8 +131,11 @@ type Query {
 }
 
 type Mutation {
+  athleteCompetitionRegistration(
+    registration: CompetitionRegistrationInput!
+  ): RegularAthlete!
   authenticate(email: String!, password: String!): AuthToken!
-  createWorkoutScore(score: CreateScoreInput): Score!
+  createWorkoutScore(score: CreateScoreInput!): Score!
 }
 
 enum LEADERBOARD_DIVISION {
