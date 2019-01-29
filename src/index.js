@@ -1,5 +1,6 @@
 const { ApolloServer, gql } = require('apollo-server')
 const fs = require('fs')
+const stripe = require('stripe')(process.env.STRIPE_KEY)
 
 const db = require('./db')
 const resolvers = require('./resolvers')
@@ -14,7 +15,8 @@ const server = new ApolloServer({
   context: req => ({
     ...req,
     db,
-    loaders
+    loaders,
+    stripe
   }),
   introspection: true,
   playground: true,
