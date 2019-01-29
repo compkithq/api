@@ -1,3 +1,5 @@
+const athleteCompetitionCategory = require('../../utils/athlete-competition-category')
+
 module.exports = {
   leaderboards: async (root, { competitionId }, { db }) => {
     try {
@@ -27,22 +29,8 @@ module.exports = {
     { db, stripe }
   ) => {
     try {
-      let category
-
-      switch (true) {
-        case age < 35:
-          category = 'under-35'
-          break
-        case age < 45:
-          category = '35-44'
-          break
-        case age >= 45:
-        default:
-          category = 'over-44'
-      }
-
       const { tickets: ids } = await db.Leaderboard.findOne({
-        category,
+        category: athleteCompetitionCategory({ age }),
         competition,
         division,
         gender
