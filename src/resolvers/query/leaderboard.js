@@ -23,6 +23,20 @@ module.exports = {
     }
   },
 
+  tickets: async ({ tickets: ids }, args, { stripe }) => {
+    try {
+      const { data: tickets } = await stripe.skus.list({ ids: [...ids] })
+
+      return tickets.map(({ attributes, inventory, ...rest }) => ({
+        ...rest,
+        ...attributes,
+        ...inventory
+      }))
+    } catch (e) {
+      return e
+    }
+  },
+
   workouts: async ({ workouts: ids }, args, { loaders: { workoutLoader } }) => {
     try {
       const workouts = await workoutLoader.loadMany(ids)
