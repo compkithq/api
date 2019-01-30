@@ -38,6 +38,7 @@ type RegularAthlete implements Athlete {
 type ScoreboardAthlete implements Athlete {
   box: String
   name: String
+  total: Int
   scores: [Score]
 }
 

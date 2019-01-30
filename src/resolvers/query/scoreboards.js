@@ -11,52 +11,56 @@ module.exports = {
         leaderboard: { $eq: leaderboardId }
       }).exec()
 
-      const mappedAthletes = leaderboardAthletes.map(athlete => {
+      const buildAthletes = leaderboardAthletes.map(async athlete => {
         const { scores, ...rest } = athlete.toObject({ virtuals: true })
+
+        const buildScores = leaderboardWorkouts.map(async workout => {
+          const athleteScore = await db.Score.findOne({
+            workout: { $eq: workout._id },
+            athlete: { $eq: athlete._id }
+          }).exec()
+          const allWorkoutScores = await db.Score.find({
+            workout: { $in: workout._id }
+          }).exec()
+          if (athleteScore) {
+            return {
+              ...athleteScore.toObject({
+                virtuals: true
+              }),
+              rank: calculateScoreRank({
+                scores: allWorkoutScores,
+                score: athleteScore.value,
+                workoutType: workout.type
+              })
+            }
+          }
+          const newScore = new db.Score({
+            value: 0,
+            workout: workout._id
+          })
+          return {
+            ...newScore.toObject({
+              virtuals: true
+            }),
+            rank: allWorkoutScores.length + 1
+          }
+        })
+
+        const athleteScores = await Promise.all(buildScores)
 
         return {
           ...rest,
-          scores: async () => {
-            return leaderboardWorkouts.map(async workout => {
-              const athleteScore = await db.Score.findOne({
-                workout: { $eq: workout._id },
-                athlete: { $eq: athlete._id }
-              })
-
-              const allWorkoutScores = await db.Score.find({
-                workout: { $in: workout._id }
-              }).exec()
-
-              if (athleteScore) {
-                return {
-                  ...athleteScore.toObject({
-                    virtuals: true
-                  }),
-                  rank: calculateScoreRank({
-                    scores: allWorkoutScores,
-                    score: athleteScore.value,
-                    workoutType: workout.type
-                  })
-                }
-              }
-
-              const newScore = new db.Score({
-                value: 0,
-                workout: workout._id
-              })
-
-              return {
-                ...newScore.toObject({
-                  virtuals: true
-                }),
-                rank: allWorkoutScores.length + 1
-              }
-            })
-          }
+          scores: athleteScores,
+          total: athleteScores.reduce((a, b) => a + b.rank, 0)
         }
       })
 
-      return { athletes: mappedAthletes, workouts: leaderboardWorkouts }
+      const mappedAthletes = await Promise.all(buildAthletes)
+
+      return {
+        athletes: mappedAthletes.sort((a, b) => a.total - b.total),
+        workouts: leaderboardWorkouts
+      }
     } catch (e) {
       return e
     }
