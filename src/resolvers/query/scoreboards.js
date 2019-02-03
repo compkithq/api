@@ -1,3 +1,4 @@
+const calculateAthleteRank = require('../../utils/calculate-athlete-rank')
 const calculateScoreRank = require('../../utils/calculate-score-rank')
 
 module.exports = {
@@ -58,7 +59,15 @@ module.exports = {
       const mappedAthletes = await Promise.all(buildAthletes)
 
       return {
-        athletes: mappedAthletes.sort((a, b) => a.total - b.total),
+        athletes: mappedAthletes
+          .map(athlete => ({
+            ...athlete,
+            rank: calculateAthleteRank({
+              athletes: mappedAthletes,
+              total: athlete.total
+            })
+          }))
+          .sort((a, b) => a.total - b.total),
         workouts: leaderboardWorkouts
       }
     } catch (e) {
