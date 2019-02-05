@@ -66,6 +66,11 @@ type Leaderboard {
   name: String
   tickets: [Ticket]
   workouts: [Workout]
+  meta: LeaderboardMeta
+}
+
+type LeaderboardMeta {
+  athletesCount: Int!
 }
 
 type Score {

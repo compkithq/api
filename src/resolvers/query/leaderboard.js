@@ -23,6 +23,14 @@ module.exports = {
     }
   },
 
+  meta: async ({ athletes }, args, ctx) => {
+    try {
+      return { athletesCount: athletes.length }
+    } catch (e) {
+      return e
+    }
+  },
+
   tickets: async ({ tickets: ids }, args, { stripe }) => {
     try {
       const { data: tickets } = await stripe.skus.list({ ids: [...ids] })
