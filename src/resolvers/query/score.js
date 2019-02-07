@@ -9,6 +9,14 @@ module.exports = {
     }
   },
 
+  meta: async ({ createdAt, updatedAt }, args, ctx) => {
+    try {
+      return { createdAt, updatedAt }
+    } catch (e) {
+      return e
+    }
+  },
+
   workout: async ({ workout: id }, args, { loaders: { workoutLoader } }) => {
     try {
       const workout = await workoutLoader.load(id)

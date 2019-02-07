@@ -6,6 +6,7 @@ module.exports = mongoose.model(
   Schema({
     athlete: mongoose.Schema.Types.ObjectId,
     createdAt: 'Date',
+    updatedAt: 'Date',
     value: 'Number',
     workout: mongoose.Schema.Types.ObjectId
   })
