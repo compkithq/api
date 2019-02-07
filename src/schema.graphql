@@ -81,11 +81,15 @@ type LeaderboardMeta {
 type Score {
   id: ID!
   athlete: RegularAthlete
-  createdAt: Date
   rank: Int
-  updatedAt: Date
   value: Float
   workout: Workout
+  meta: ScoreMeta!
+}
+
+type ScoreMeta {
+  createdAt: Date!
+  updatedAt: Date
 }
 
 type Scoreboard {
