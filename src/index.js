@@ -10,16 +10,18 @@ const loaders = require('./loaders')
 const typeDefs = gql`
   ${fs.readFileSync(__dirname.concat('/schema.graphql'), 'utf8')}
 `
+const { getUserId } = require('./utils')
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: req => ({
+  context: async req => ({
     ...req,
     db,
     loaders,
     postmark: new postmark.ServerClient(process.env.POSTMARK_KEY),
-    stripe
+    stripe,
+    userId: await getUserId({ ...req })
   }),
   introspection: true,
   playground: true,
