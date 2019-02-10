@@ -1,5 +1,7 @@
 const { ApolloServer, gql } = require('apollo-server')
 const fs = require('fs')
+const { makeExecutableSchema } = require('graphql-tools')
+const { applyMiddleware } = require('graphql-middleware')
 
 const postmark = require('postmark')
 const stripe = require('stripe')(process.env.STRIPE_KEY)
@@ -13,8 +15,7 @@ const typeDefs = gql`
 const { getUserId } = require('./utils')
 
 const server = new ApolloServer({
-  typeDefs,
-  resolvers,
+  schema: applyMiddleware(makeExecutableSchema({ typeDefs, resolvers })),
   context: async req => ({
     ...req,
     db,
