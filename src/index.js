@@ -9,13 +9,17 @@ const stripe = require('stripe')(process.env.STRIPE_KEY)
 const db = require('./db')
 const resolvers = require('./resolvers')
 const loaders = require('./loaders')
+const permissions = require('./permissions')
 const typeDefs = gql`
   ${fs.readFileSync(__dirname.concat('/schema.graphql'), 'utf8')}
 `
 const { getUserId } = require('./utils')
 
 const server = new ApolloServer({
-  schema: applyMiddleware(makeExecutableSchema({ typeDefs, resolvers })),
+  schema: applyMiddleware(
+    makeExecutableSchema({ typeDefs, resolvers }),
+    permissions
+  ),
   context: async req => ({
     ...req,
     db,
