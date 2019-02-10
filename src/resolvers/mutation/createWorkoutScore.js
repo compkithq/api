@@ -7,9 +7,9 @@ module.exports = {
     { db }
   ) => {
     try {
-      const score = await db.Score.findOne({ athlete, workout })
+      const existingScore = await db.Score.findOne({ athlete, workout })
 
-      if (score) throw new AthleteWorkoutScoreExists()
+      if (existingScore) throw new AthleteWorkoutScoreExists()
 
       const newScore = await new db.Score({
         athlete,
