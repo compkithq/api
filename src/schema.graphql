@@ -139,6 +139,7 @@ type Query {
   getRelevantLeaderboard(criteria: RelevantLeaderboardInput): Leaderboard
   leaderboards(competitionId: ID!): [Leaderboard]
   leaderboard(id: ID!): Leaderboard
+  me: RegularAthlete
   scoreboard(leaderboardId: ID!): Scoreboard
   scores(workoutId: ID!, sort: SCORES_SORT, dir: SORT_DIR): [Score]
   venues(limit: Int, offset: Int): [Venue]
