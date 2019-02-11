@@ -17,7 +17,7 @@ module.exports = {
     if (!passwordsMatch) throw new IncorrectCredentialsError()
 
     return {
-      token: signToken({ email, id: user.id })
+      token: await signToken({ email, id: user.id })
     }
   }
 }
