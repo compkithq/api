@@ -155,6 +155,8 @@ type Mutation {
   ): RegularAthlete!
   authenticate(email: String!, password: String!): AuthToken!
   createWorkoutScore(score: CreateScoreInput!): Score!
+  lockCompetitionLeaderboards(competitionId: ID!): [Leaderboard]!
+  unlockCompetitionLeaderboards(competitionId: ID!): [Leaderboard]!
   updateWorkoutScore(score: UpdateScoreInput!): Score!
 }
 
