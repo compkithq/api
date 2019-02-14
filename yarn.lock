@@ -353,7 +353,7 @@ apollo-server-plugin-base@0.3.0:
   resolved "https://registry.npmjs.org/apollo-server-plugin-base/-/apollo-server-plugin-base-0.3.0.tgz#26c7f9c020b2d444de5bebd2e3c406bebd9c302e"
   integrity sha512-SOwp4cpZwyklvP1MkMcY6+12c1hrb5gwC4vK4a23kL5rr9FC0sENcXo3uVVM4XlDGOXIkY+sCM8ngKFuef2flw==
 
-apollo-server@^2.0.7:
+apollo-server@^2.4.0:
   version "2.4.0"
   resolved "https://registry.npmjs.org/apollo-server/-/apollo-server-2.4.0.tgz#cfcf0431001451d7cda0d89f5ea8f7116aa1a1f4"
   integrity sha512-dEc2lGA1qkvffnArlNXDtJ74+gh4dNKbtTYsnoTveve3ML96DK8G2u5yNqwRqxZHUQmLrx3jiehFaPBqk+Cuhw==
