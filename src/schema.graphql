@@ -68,6 +68,7 @@ type Leaderboard {
   competition: Competition
   division: LEADERBOARD_DIVISION
   gender: LEADERBOARD_GENDER
+  locked: Boolean
   name: String
   tickets: [Ticket]
   workouts: [Workout]
