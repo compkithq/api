@@ -22,7 +22,7 @@ input RelevantLeaderboardInput {
   age: Int!
   competition: ID!
   division: LEADERBOARD_DIVISION!
-  gender: LEADERBOARD_GENDER!
+  gender: ATHLETE_GENDER!
 }
 
 input UpdateScoreInput {
@@ -70,7 +70,7 @@ type Leaderboard {
   category: String
   competition: Competition
   division: LEADERBOARD_DIVISION
-  gender: LEADERBOARD_GENDER
+  gender: ATHLETE_GENDER
   locked: Boolean
   name: String
   tickets: [Ticket]
@@ -174,7 +174,7 @@ enum LEADERBOARD_DIVISION {
   scaled
 }
 
-enum LEADERBOARD_GENDER {
+enum ATHLETE_GENDER {
   female
   male
 }
