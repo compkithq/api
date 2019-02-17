@@ -8,9 +8,14 @@ module.exports = User.discriminator(
   Schema(
     {
       box: 'String',
+      dateOfBirth: 'Date',
+      gender: {
+        enum: ['female', 'male'],
+        type: String
+      },
       leaderboards: [mongoose.Schema.Types.ObjectId],
-      name: 'String',
-      scores: [mongoose.Schema.Types.ObjectId]
+      scores: [mongoose.Schema.Types.ObjectId],
+      stripeID: 'String'
     },
     { discriminatorKey: 'kind' }
   )

@@ -35,6 +35,9 @@ scalar Date
 type RegularAthlete implements Athlete {
   id: ID!
   box: String
+  dateOfBirth: Date
+  email: String
+  gender: ATHLETE_GENDER
   leaderboards: [Leaderboard]
   name: String
   scores: [Score]
@@ -107,6 +110,12 @@ type Ticket {
   quantity: Int
   release: TICKET_RELEASE
   type: TICKET_TYPE
+}
+
+type User {
+  email: String
+  isAdmin: Boolean
+  name: String
 }
 
 type Venue {
