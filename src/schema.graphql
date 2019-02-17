@@ -22,7 +22,7 @@ input RelevantLeaderboardInput {
   age: Int!
   competition: ID!
   division: LEADERBOARD_DIVISION!
-  gender: LEADERBOARD_GENDER!
+  gender: ATHLETE_GENDER!
 }
 
 input UpdateScoreInput {
@@ -35,6 +35,9 @@ scalar Date
 type RegularAthlete implements Athlete {
   id: ID!
   box: String
+  dateOfBirth: Date
+  email: String
+  gender: ATHLETE_GENDER
   leaderboards: [Leaderboard]
   name: String
   scores: [Score]
@@ -67,7 +70,7 @@ type Leaderboard {
   category: String
   competition: Competition
   division: LEADERBOARD_DIVISION
-  gender: LEADERBOARD_GENDER
+  gender: ATHLETE_GENDER
   locked: Boolean
   name: String
   tickets: [Ticket]
@@ -109,6 +112,12 @@ type Ticket {
   type: TICKET_TYPE
 }
 
+type User {
+  email: String
+  isAdmin: Boolean
+  name: String
+}
+
 type Venue {
   id: ID!
   address: String
@@ -140,7 +149,7 @@ type Query {
   getRelevantLeaderboard(criteria: RelevantLeaderboardInput): Leaderboard
   leaderboards(competitionId: ID!): [Leaderboard]
   leaderboard(id: ID!): Leaderboard
-  me: RegularAthlete
+  me: User
   scoreboard(leaderboardId: ID!): Scoreboard
   scores(workoutId: ID!, sort: SCORES_SORT, dir: SORT_DIR): [Score]
   venues(limit: Int, offset: Int): [Venue]
@@ -165,7 +174,7 @@ enum LEADERBOARD_DIVISION {
   scaled
 }
 
-enum LEADERBOARD_GENDER {
+enum ATHLETE_GENDER {
   female
   male
 }

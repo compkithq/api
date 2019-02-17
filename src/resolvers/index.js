@@ -8,6 +8,7 @@ const Query = require('./query')
 const Mutation = require('./mutation')
 const RegularAthlete = require('./query/regularAthlete')
 const Score = require('./query/score')
+const User = require('./query/user')
 const Workout = require('./query/workout')
 
 module.exports = {
@@ -40,5 +41,6 @@ module.exports = {
   Mutation,
   RegularAthlete,
   Score,
+  User,
   Workout
 }

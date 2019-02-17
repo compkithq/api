@@ -1,9 +1,9 @@
 module.exports = {
   me: async (root, args, { db, userId: id }) => {
     try {
-      const athlete = await db.Athlete.findById(id).exec()
+      const user = await db.User.findById(id).exec()
 
-      return athlete
+      return user
     } catch (e) {
       return e
     }
