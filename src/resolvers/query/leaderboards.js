@@ -1,3 +1,4 @@
+const athleteCompetitionAge = require('../../utils/athlete-competition-age')
 const athleteCompetitionCategory = require('../../utils/athlete-competition-category')
 
 module.exports = {
@@ -25,12 +26,18 @@ module.exports = {
 
   getRelevantLeaderboard: async (
     root,
-    { criteria: { age, competition, division, gender } },
-    { db }
+    { criteria: { competition, division } },
+    { db, userId }
   ) => {
     try {
+      const { dateOfBirth, gender } = await db.Athlete.findById(userId)
+
+      const { finalsDate } = await db.Competition.findById(competition)
+
       const leaderboard = await db.Leaderboard.findOne({
-        category: athleteCompetitionCategory({ age }),
+        category: athleteCompetitionCategory({
+          age: athleteCompetitionAge({ finalsDate, dateOfBirth })
+        }),
         competition,
         division,
         gender
