@@ -1,6 +1,20 @@
 module.exports = {
-  leaderboards: async (
-    { leaderboards: ids },
+  finalsLeaderboards: async (
+    { finalsLeaderboards: ids },
+    args,
+    { loaders: { leaderboardLoader } }
+  ) => {
+    try {
+      const leaderboards = await leaderboardLoader.loadMany(ids)
+
+      return leaderboards
+    } catch (e) {
+      return e
+    }
+  },
+
+  qualifiersLeaderboards: async (
+    { qualifiersLeaderboards: ids },
     args,
     { loaders: { leaderboardLoader } }
   ) => {

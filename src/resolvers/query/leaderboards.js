@@ -2,9 +2,13 @@ const athleteCompetitionAge = require('../../utils/athlete-competition-age')
 const athleteCompetitionCategory = require('../../utils/athlete-competition-category')
 
 module.exports = {
-  leaderboards: async (root, { competitionId }, { db }) => {
+  competitionQualifiersLeaderboards: async (
+    root,
+    { competitionId },
+    { db }
+  ) => {
     try {
-      const leaderboards = await db.Leaderboard.find({
+      const leaderboards = await db.QualifiersLeaderboard.find({
         competition: { $in: competitionId }
       }).exec()
 
@@ -14,17 +18,19 @@ module.exports = {
     }
   },
 
-  leaderboard: async (root, { id }, { db }) => {
+  competitionFinalsLeaderboards: async (root, { competitionId }, { db }) => {
     try {
-      const leaderboard = await db.Leaderboard.findById(id).exec()
+      const leaderboards = await db.FinalsLeaderboard.find({
+        competition: { $in: competitionId }
+      }).exec()
 
-      return leaderboard
+      return leaderboards
     } catch (e) {
       return e
     }
   },
 
-  getRelevantLeaderboard: async (
+  getRelevantQualifiersLeaderboard: async (
     root,
     { criteria: { competition, division } },
     { db, userId }
@@ -34,7 +40,7 @@ module.exports = {
 
       const { finalsDate } = await db.Competition.findById(competition)
 
-      const leaderboard = await db.Leaderboard.findOne({
+      const leaderboard = await db.QualifiersLeaderboard.findOne({
         category: athleteCompetitionCategory({
           age: athleteCompetitionAge({ finalsDate, dateOfBirth })
         }),

@@ -7,7 +7,7 @@ module.exports = shield({
     unlockCompetitionLeaderboards: rules.isAuthenticated
   },
   Query: {
-    getRelevantLeaderboard: rules.isAuthenticated,
+    getRelevantQualifiersLeaderboard: rules.isAuthenticated,
     me: rules.isAuthenticated
   }
 })

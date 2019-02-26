@@ -3,9 +3,10 @@ const { Kind } = require('graphql/language')
 
 const Athlete = require('./query/athlete')
 const Competition = require('./query/competition')
-const Leaderboard = require('./query/leaderboard')
+const FinalsLeaderboard = require('./query/finalsLeaderboard')
 const Query = require('./query')
 const Mutation = require('./mutation')
+const QualifiersLeaderboard = require('./query/qualifiersLeaderboard')
 const RegularAthlete = require('./query/regularAthlete')
 const Score = require('./query/score')
 const User = require('./query/user')
@@ -36,8 +37,14 @@ module.exports = {
       return null
     }
   }),
-  Leaderboard,
+  FinalsLeaderboard,
+  Leaderboard: {
+    __resolveType() {
+      return null
+    }
+  },
   Query,
+  QualifiersLeaderboard,
   Mutation,
   RegularAthlete,
   Score,
