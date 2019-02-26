@@ -9,11 +9,16 @@ module.exports = User.discriminator(
     {
       box: 'String',
       dateOfBirth: 'Date',
+      finalsLeaderboards: [
+        { type: mongoose.Schema.Types.ObjectId, ref: 'FinalsLeaderboard' }
+      ],
       gender: {
         enum: ['female', 'male'],
         type: String
       },
-      leaderboards: [mongoose.Schema.Types.ObjectId],
+      qualifiersLeaderboards: [
+        { type: mongoose.Schema.Types.ObjectId, ref: 'QualifiersLeaderboard' }
+      ],
       scores: [mongoose.Schema.Types.ObjectId],
       stripeID: 'String'
     },

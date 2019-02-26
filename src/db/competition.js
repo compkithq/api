@@ -5,9 +5,14 @@ module.exports = mongoose.model(
   'Competition',
   Schema({
     finalsDate: 'Date',
-    leaderboards: [mongoose.Schema.Types.ObjectId],
+    finalsLeaderboards: [
+      { type: mongoose.Schema.Types.ObjectId, ref: 'FinalsLeaderboard' }
+    ],
     name: 'String',
     qualifiersEndDate: 'Date',
+    qualifiersLeaderboards: [
+      { type: mongoose.Schema.Types.ObjectId, ref: 'QualifiersLeaderboard' }
+    ],
     qualifiersStartDate: 'Date',
     registrationEndDate: 'Date',
     registrationStartDate: 'Date',
