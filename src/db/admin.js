@@ -5,5 +5,5 @@ const User = require('./user')
 
 module.exports = User.discriminator(
   'Admin',
-  Schema({ discriminatorKey: 'kind' })
+  Schema({}, { discriminatorKey: 'kind' })
 )

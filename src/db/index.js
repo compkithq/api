@@ -1,3 +1,4 @@
+const Admin = require('./admin')
 const Athlete = require('./athlete')
 const Competition = require('./competition')
 const FinalsLeaderboard = require('./finalsLeaderboard')
@@ -9,6 +10,7 @@ const Venue = require('./venue')
 const Workout = require('./workout')
 
 module.exports = {
+  Admin,
   Athlete,
   Competition,
   FinalsLeaderboard,
