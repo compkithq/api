@@ -4,6 +4,19 @@ interface Athlete {
   scores: [Score]
 }
 
+interface Leaderboard {
+  id: ID!
+  athletes: [RegularAthlete]
+  category: String
+  competition: Competition
+  division: LEADERBOARD_DIVISION
+  gender: ATHLETE_GENDER
+  locked: Boolean
+  name: String
+  tickets: [Ticket]
+  workouts: [Workout]
+}
+
 input CompetitionRegistrationInput {
   currency: String!
   email: String!
@@ -36,8 +49,9 @@ type RegularAthlete implements Athlete {
   dateOfBirth: Date
   email: String
   gender: ATHLETE_GENDER
-  leaderboards: [Leaderboard]
+  finalsLeaderboards: [FinalsLeaderboard]
   name: String
+  qualifiersLeaderboards: [QualifiersLeaderboard]
   scores: [Score]
 }
 
@@ -52,9 +66,10 @@ type ScoreboardAthlete implements Athlete {
 type Competition {
   id: ID!
   finalsDate: Date
-  leaderboards: [Leaderboard]
+  finalsLeaderboards: [FinalsLeaderboard]
   name: String
   qualifiersEndDate: Date
+  qualifiersLeaderboards: [QualifiersLeaderboard]
   qualifiersStartDate: Date
   registrationEndDate: Date
   registrationStartDate: Date
@@ -62,7 +77,27 @@ type Competition {
   venue: Venue
 }
 
-type Leaderboard {
+type FinalsLeaderboard implements Leaderboard {
+  id: ID!
+  athletes: [RegularAthlete]
+  category: String
+  competition: Competition
+  division: LEADERBOARD_DIVISION
+  gender: ATHLETE_GENDER
+  locked: Boolean
+  name: String
+  qualifiedAthletes: [RegularAthlete]
+  tickets: [Ticket]
+  workouts: [Workout]
+  meta: FinalsLeaderboardMeta
+}
+
+type FinalsLeaderboardMeta {
+  athletesCount: Int!
+  qualifiedAthletesCount: Int!
+}
+
+type QualifiersLeaderboard implements Leaderboard {
   id: ID!
   athletes: [RegularAthlete]
   category: String
@@ -73,10 +108,10 @@ type Leaderboard {
   name: String
   tickets: [Ticket]
   workouts: [Workout]
-  meta: LeaderboardMeta
+  meta: QualifiersLeaderboardMeta
 }
 
-type LeaderboardMeta {
+type QualifiersLeaderboardMeta {
   athletesCount: Int!
 }
 
@@ -127,7 +162,6 @@ type Venue {
 type Workout {
   id: ID!
   description: String
-  leaderboard: Leaderboard
   standards: String
   name: String
   scores(sort: SCORES_SORT, dir: SORT_DIR): [Score]
@@ -144,9 +178,11 @@ type Query {
   competitions(limit: Int, offset: Int): [Competition]
   competition(id: ID!): Competition
   getCompetitionBySlug(slug: String!): Competition
-  getRelevantLeaderboard(criteria: RelevantLeaderboardInput): Leaderboard
-  leaderboards(competitionId: ID!): [Leaderboard]
-  leaderboard(id: ID!): Leaderboard
+  getRelevantQualifiersLeaderboard(
+    criteria: RelevantLeaderboardInput
+  ): QualifiersLeaderboard
+  competitionQualifiersLeaderboards(competitionId: ID!): [QualifiersLeaderboard]
+  competitionFinalsLeaderboards(competitionId: ID!): [FinalsLeaderboard]
   me: User
   scoreboard(leaderboardId: ID!): Scoreboard
   scores(workoutId: ID!, sort: SCORES_SORT, dir: SORT_DIR): [Score]

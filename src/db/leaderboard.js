@@ -3,15 +3,18 @@ const { Schema } = mongoose
 
 module.exports = mongoose.model(
   'Leaderboard',
-  Schema({
-    athletes: [mongoose.Schema.Types.ObjectId],
-    category: 'String',
-    competition: { type: Schema.Types.ObjectId, ref: 'Competition' },
-    division: 'String',
-    gender: 'String',
-    locked: 'Boolean',
-    name: 'String',
-    tickets: [{ type: 'String' }],
-    workouts: [mongoose.Schema.Types.ObjectId]
-  })
+  Schema(
+    {
+      athletes: [mongoose.Schema.Types.ObjectId],
+      category: 'String',
+      competition: Schema.Types.ObjectId,
+      division: 'String',
+      gender: 'String',
+      locked: 'Boolean',
+      name: 'String',
+      tickets: [{ type: 'String' }],
+      workouts: [mongoose.Schema.Types.ObjectId]
+    },
+    { discriminatorKey: 'type' }
+  )
 )
