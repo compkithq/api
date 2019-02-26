@@ -19,10 +19,8 @@ input CreateScoreInput {
 }
 
 input RelevantLeaderboardInput {
-  age: Int!
   competition: ID!
   division: LEADERBOARD_DIVISION!
-  gender: ATHLETE_GENDER!
 }
 
 input UpdateScoreInput {
