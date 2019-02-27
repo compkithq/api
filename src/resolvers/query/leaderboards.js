@@ -56,19 +56,19 @@ module.exports = {
 
   getRelevantQualifiersLeaderboard: async (
     root,
-    { criteria: { competition, division } },
+    { competitionId, division },
     { db, userId }
   ) => {
     try {
       const { dateOfBirth, gender } = await db.Athlete.findById(userId)
 
-      const { finalsDate } = await db.Competition.findById(competition)
+      const { finalsDate } = await db.Competition.findById(competitionId)
 
       const leaderboard = await db.QualifiersLeaderboard.findOne({
         category: athleteCompetitionCategory({
           age: athleteCompetitionAge({ finalsDate, dateOfBirth })
         }),
-        competition,
+        competition: competitionId,
         division,
         gender
       })
