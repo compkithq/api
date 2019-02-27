@@ -43,10 +43,9 @@ module.exports = {
       const {
         competition: { name: competitionName },
         name: leaderboardName
-      } = await db.Leaderboard.findByIdAndUpdate(
+      } = await db.FinalsLeaderboard.findByIdAndUpdate(
         leaderboard,
         { $push: { athletes: athlete } },
-        { $pull: { qualifiedAthletes: athlete } },
         { new: true }
       )
         .populate('competition')
@@ -54,7 +53,7 @@ module.exports = {
 
       athlete = await db.Athlete.findByIdAndUpdate(
         athlete,
-        { $push: { leaderboards: leaderboard } },
+        { $push: { finalsLeaderboards: leaderboard } },
         { new: true }
       ).exec()
 
