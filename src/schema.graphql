@@ -31,11 +31,6 @@ input CreateScoreInput {
   workout: ID!
 }
 
-input RelevantLeaderboardInput {
-  competition: ID!
-  division: LEADERBOARD_DIVISION!
-}
-
 input UpdateScoreInput {
   score: ID!
   value: Float
@@ -178,8 +173,10 @@ type Query {
   competitions(limit: Int, offset: Int): [Competition]
   competition(id: ID!): Competition
   getCompetitionBySlug(slug: String!): Competition
+  getRelevantFinalsLeaderboards(competitionId: ID!): [FinalsLeaderboard]
   getRelevantQualifiersLeaderboard(
-    criteria: RelevantLeaderboardInput
+    competitionId: ID!
+    division: LEADERBOARD_DIVISION!
   ): QualifiersLeaderboard
   competitionQualifiersLeaderboards(competitionId: ID!): [QualifiersLeaderboard]
   competitionFinalsLeaderboards(competitionId: ID!): [FinalsLeaderboard]
@@ -193,7 +190,10 @@ type Query {
 }
 
 type Mutation {
-  athleteCompetitionRegistration(
+  athleteFinalsRegistration(
+    registration: CompetitionRegistrationInput!
+  ): RegularAthlete!
+  athleteQualifiersRegistration(
     registration: CompetitionRegistrationInput!
   ): RegularAthlete!
   authenticate(email: String!, password: String!): AuthToken!

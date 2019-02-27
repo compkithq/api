@@ -7,7 +7,7 @@ module.exports = mongoose.model(
     {
       athletes: [mongoose.Schema.Types.ObjectId],
       category: 'String',
-      competition: Schema.Types.ObjectId,
+      competition: { type: Schema.Types.ObjectId, ref: 'Competition' },
       division: 'String',
       gender: 'String',
       locked: 'Boolean',

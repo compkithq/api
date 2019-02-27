@@ -30,21 +30,45 @@ module.exports = {
     }
   },
 
-  getRelevantQualifiersLeaderboard: async (
+  getRelevantFinalsLeaderboards: async (
     root,
-    { criteria: { competition, division } },
+    { competitionId },
     { db, userId }
   ) => {
     try {
       const { dateOfBirth, gender } = await db.Athlete.findById(userId)
 
-      const { finalsDate } = await db.Competition.findById(competition)
+      const { finalsDate } = await db.Competition.findById(competitionId)
+
+      const leaderboards = await db.FinalsLeaderboard.find({
+        category: athleteCompetitionCategory({
+          age: athleteCompetitionAge({ finalsDate, dateOfBirth })
+        }),
+        competition: competitionId,
+        gender
+      })
+
+      return leaderboards
+    } catch (e) {
+      return e
+    }
+  },
+
+  getRelevantQualifiersLeaderboard: async (
+    root,
+    { competitionId, division },
+    { db, userId }
+  ) => {
+    try {
+      const { dateOfBirth, gender } = await db.Athlete.findById(userId)
+
+      const { finalsDate } = await db.Competition.findById(competitionId)
 
       const leaderboard = await db.QualifiersLeaderboard.findOne({
         category: athleteCompetitionCategory({
           age: athleteCompetitionAge({ finalsDate, dateOfBirth })
         }),
-        competition,
+        competition: competitionId,
         division,
         gender
       })
