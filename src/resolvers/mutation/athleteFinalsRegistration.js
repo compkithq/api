@@ -1,5 +1,5 @@
 module.exports = {
-  athleteCompetitionRegistration: async (
+  athleteFinalsRegistration: async (
     root,
     { registration: { currency, email, leaderboard, ticket, token } },
     { db, postmark, stripe }
@@ -46,6 +46,7 @@ module.exports = {
       } = await db.Leaderboard.findByIdAndUpdate(
         leaderboard,
         { $push: { athletes: athlete } },
+        { $pull: { qualifiedAthletes: athlete } },
         { new: true }
       )
         .populate('competition')

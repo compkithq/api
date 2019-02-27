@@ -193,7 +193,10 @@ type Query {
 }
 
 type Mutation {
-  athleteCompetitionRegistration(
+  athleteFinalsRegistration(
+    registration: CompetitionRegistrationInput!
+  ): RegularAthlete!
+  athleteQualifiersRegistration(
     registration: CompetitionRegistrationInput!
   ): RegularAthlete!
   authenticate(email: String!, password: String!): AuthToken!
