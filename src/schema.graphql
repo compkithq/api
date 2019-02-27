@@ -190,6 +190,10 @@ type Query {
 }
 
 type Mutation {
+  addAthletesToFinalsLeaderboard(
+    leaderboardId: ID!
+    athletes: [ID!]
+  ): FinalsLeaderboard
   athleteFinalsRegistration(
     registration: CompetitionRegistrationInput!
   ): RegularAthlete!
