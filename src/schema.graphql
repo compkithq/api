@@ -120,7 +120,7 @@ type Score {
 }
 
 type ScoreMeta {
-  createdAt: Date!
+  createdAt: Date
   updatedAt: Date
 }
 
@@ -181,7 +181,7 @@ type Query {
   competitionQualifiersLeaderboards(competitionId: ID!): [QualifiersLeaderboard]
   competitionFinalsLeaderboards(competitionId: ID!): [FinalsLeaderboard]
   me: User
-  scoreboard(leaderboardId: ID!): Scoreboard
+  getQualifiersLeaderboardScoreboard(leaderboardId: ID!): Scoreboard
   scores(workoutId: ID!, sort: SCORES_SORT, dir: SORT_DIR): [Score]
   venues(limit: Int, offset: Int): [Venue]
   venue(id: ID!): Venue
