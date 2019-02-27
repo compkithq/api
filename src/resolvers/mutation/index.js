@@ -1,3 +1,4 @@
+const addAthletesToFinalsLeaderboard = require('./addAthletesToFinalsLeaderboard')
 const athleteFinalsRegistration = require('./athleteFinalsRegistration')
 const athleteQualifiersRegistration = require('./athleteQualifiersRegistration')
 const auth = require('./auth')
@@ -7,6 +8,7 @@ const unlockCompetitionLeaderboards = require('./unlockCompetitionLeaderboards')
 const updateWorkoutScore = require('./updateWorkoutScore')
 
 module.exports = {
+  ...addAthletesToFinalsLeaderboard,
   ...athleteFinalsRegistration,
   ...athleteQualifiersRegistration,
   ...auth,
