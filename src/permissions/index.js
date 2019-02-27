@@ -7,8 +7,14 @@ module.exports = shield({
     athleteFinalsRegistration: rules.isAuthenticated,
     athleteQualifiersRegistration: rules.isAuthenticated,
     createWorkoutScore: rules.isAuthenticated,
-    lockCompetitionLeaderboards: and(rules.isAuthenticated, rules.isAdmin),
-    unlockCompetitionLeaderboards: and(rules.isAuthenticated, rules.isAdmin),
+    lockCompetitionQualifiersLeaderboards: and(
+      rules.isAuthenticated,
+      rules.isAdmin
+    ),
+    unlockCompetitionQualifiersLeaderboards: and(
+      rules.isAuthenticated,
+      rules.isAdmin
+    ),
     updateWorkoutScore: rules.isAuthenticated
   },
   Query: {

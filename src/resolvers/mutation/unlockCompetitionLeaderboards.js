@@ -1,14 +1,14 @@
 module.exports = {
-  unlockCompetitionLeaderboards: async (
+  unlockCompetitionQualifiersLeaderboards: async (
     root,
     { competitionId: id },
     { db }
   ) => {
     try {
-      const competition = await db.Competition.findById(id)
+      const { qualifiersLeaderboards } = await db.Competition.findById(id)
 
-      return competition.leaderboards.map(async leaderboard => {
-        return await db.Leaderboard.findByIdAndUpdate(
+      return qualifiersLeaderboards.map(async leaderboard => {
+        return await db.QualifiersLeaderboard.findByIdAndUpdate(
           leaderboard,
           {
             $set: { locked: false }
