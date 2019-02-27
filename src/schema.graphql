@@ -120,7 +120,7 @@ type Score {
 }
 
 type ScoreMeta {
-  createdAt: Date!
+  createdAt: Date
   updatedAt: Date
 }
 
