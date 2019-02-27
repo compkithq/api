@@ -5,7 +5,7 @@ module.exports = {
   scoreboard: async (root, { leaderboardId }, { db }) => {
     try {
       const leaderboardAthletes = await db.Athlete.find({
-        leaderboards: { $in: leaderboardId }
+        qualifiersLeaderboards: { $in: leaderboardId }
       }).exec()
 
       const leaderboardWorkouts = await db.Workout.find({
