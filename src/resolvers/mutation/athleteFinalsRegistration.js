@@ -59,7 +59,7 @@ module.exports = {
 
       await postmark.sendEmailWithTemplate({
         From: 'team@firstmeanseverything.com',
-        TemplateId: '8579086',
+        TemplateId: '10470850',
         To: email,
         TemplateModel: {
           competitionName,
