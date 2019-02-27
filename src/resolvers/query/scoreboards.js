@@ -2,7 +2,11 @@ const calculateAthleteRank = require('../../utils/calculate-athlete-rank')
 const calculateScoreRank = require('../../utils/calculate-score-rank')
 
 module.exports = {
-  scoreboard: async (root, { leaderboardId }, { db }) => {
+  getQualifiersLeaderboardScoreboard: async (
+    root,
+    { leaderboardId },
+    { db }
+  ) => {
     try {
       const leaderboardAthletes = await db.Athlete.find({
         qualifiersLeaderboards: { $in: leaderboardId }
