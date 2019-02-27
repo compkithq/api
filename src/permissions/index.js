@@ -1,14 +1,14 @@
-const { shield } = require('graphql-shield')
+const { and, shield } = require('graphql-shield')
 const rules = require('./rules')
 
 module.exports = shield({
   Mutation: {
-    addAthletesToFinalsLeaderboard: rules.isAuthenticated,
+    addAthletesToFinalsLeaderboard: and(rules.isAuthenticated, rules.isAdmin),
     athleteFinalsRegistration: rules.isAuthenticated,
     athleteQualifiersRegistration: rules.isAuthenticated,
     createWorkoutScore: rules.isAuthenticated,
-    lockCompetitionLeaderboards: rules.isAuthenticated,
-    unlockCompetitionLeaderboards: rules.isAuthenticated,
+    lockCompetitionLeaderboards: and(rules.isAuthenticated, rules.isAdmin),
+    unlockCompetitionLeaderboards: and(rules.isAuthenticated, rules.isAdmin),
     updateWorkoutScore: rules.isAuthenticated
   },
   Query: {
