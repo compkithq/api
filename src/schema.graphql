@@ -167,6 +167,10 @@ type AuthToken {
   token: String!
 }
 
+type ForgotPasswordPayload {
+  id: ID!
+}
+
 type Query {
   athletes(limit: Int, offset: Int): [RegularAthlete]
   athlete(id: ID!): RegularAthlete
@@ -202,6 +206,7 @@ type Mutation {
   ): RegularAthlete!
   authenticate(email: String!, password: String!): AuthToken!
   createWorkoutScore(score: CreateScoreInput!): Score!
+  forgotPassword(email: String!): ForgotPasswordPayload!
   lockCompetitionQualifiersLeaderboards(
     competitionId: ID!
   ): [QualifiersLeaderboard]!
