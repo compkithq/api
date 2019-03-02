@@ -25,6 +25,15 @@ input CompetitionRegistrationInput {
   token: String!
 }
 
+input CreateAthleteInput {
+  box: String!
+  dateOfBirth: Date!
+  email: Email!
+  gender: ATHLETE_GENDER!
+  name: String!
+  password: String!
+}
+
 input CreateScoreInput {
   athlete: ID!
   value: Float
@@ -206,6 +215,7 @@ type Mutation {
     registration: CompetitionRegistrationInput!
   ): RegularAthlete!
   authenticate(email: Email!, password: String!): AuthToken!
+  createAthleteAccount(athlete: CreateAthleteInput!): RegularAthlete!
   createWorkoutScore(score: CreateScoreInput!): Score!
   forgotPassword(email: Email!): ForgotPasswordPayload!
   lockCompetitionQualifiersLeaderboards(

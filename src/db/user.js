@@ -5,11 +5,23 @@ module.exports = mongoose.model(
   'User',
   Schema(
     {
-      email: 'String',
-      name: 'String',
+      email: {
+        lowercase: true,
+        required: 'Email address cannot be blank',
+        trim: true,
+        type: String
+      },
+      name: {
+        required: 'Name cannot be blank',
+        trim: true,
+        type: String
+      },
       resetPasswordExpires: 'Date',
       resetPasswordToken: 'String',
-      password: 'String'
+      password: {
+        required: 'Password cannot be blank',
+        type: String
+      }
     },
     { discriminatorKey: 'kind' }
   )
