@@ -1,19 +1,24 @@
 {
   "alias": "graphql.firstmeanseverything.com",
   "env": {
-    "NODE_ENV": "production",
     "ENGINE_API_KEY": "@fme-graphql-apollo-engine-key",
     "JWT_PASSPHRASE": "@fme-jwt-passphrase",
     "MONGO_URL": "@fme-mongo-url",
     "POSTMARK_KEY": "@fme-postmark-key",
     "STRIPE_KEY": "@fme-stripe-key"
   },
-  "name": "fme-graphql",
-  "public": true,
-  "scale": {
-    "bru1": {
-      "min": 1,
-      "max": 1
+  "builds": [
+    {
+      "src": "src/index.js",
+      "use": "@now/node-server"
     }
-  }
+  ],
+  "name": "fme-graphql",
+  "routes": [
+    {
+      "src": "/.*",
+      "dest": "src/index.js"
+    }
+  ],
+  "version": 2
 }
