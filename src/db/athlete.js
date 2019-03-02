@@ -7,13 +7,21 @@ module.exports = User.discriminator(
   'Athlete',
   Schema(
     {
-      box: 'String',
-      dateOfBirth: 'Date',
+      box: {
+        required: 'Box name cannot be blank',
+        trim: true,
+        type: String
+      },
+      dateOfBirth: {
+        required: 'Date of birth cannot be blank',
+        type: Date
+      },
       finalsLeaderboards: [
         { type: mongoose.Schema.Types.ObjectId, ref: 'FinalsLeaderboard' }
       ],
       gender: {
         enum: ['female', 'male'],
+        required: 'Gender cannot be blank',
         type: String
       },
       qualifiersLeaderboards: [
