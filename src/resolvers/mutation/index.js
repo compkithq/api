@@ -5,6 +5,7 @@ const auth = require('./auth')
 const createWorkoutScore = require('./createWorkoutScore')
 const forgotPassword = require('./forgotPassword')
 const lockCompetitionLeaderboards = require('./lockCompetitionLeaderboards')
+const resetPassword = require('./resetPassword')
 const unlockCompetitionLeaderboards = require('./unlockCompetitionLeaderboards')
 const updateWorkoutScore = require('./updateWorkoutScore')
 
@@ -16,6 +17,7 @@ module.exports = {
   ...createWorkoutScore,
   ...forgotPassword,
   ...lockCompetitionLeaderboards,
+  ...resetPassword,
   ...unlockCompetitionLeaderboards,
   ...updateWorkoutScore
 }

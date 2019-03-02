@@ -28,6 +28,12 @@ exports.getUserId = async ({ req }) => {
   }
 }
 
+exports.hashPassword = async password => {
+  const salt = await bcrypt.genSalt(5)
+
+  return bcrypt.hash(password, salt, null)
+}
+
 module.exports = {
   ...exports,
   verifyToken
