@@ -37,6 +37,7 @@ input UpdateScoreInput {
 }
 
 scalar Date
+scalar Email
 
 type RegularAthlete implements Athlete {
   id: ID!
