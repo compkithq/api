@@ -205,9 +205,9 @@ type Mutation {
   athleteQualifiersRegistration(
     registration: CompetitionRegistrationInput!
   ): RegularAthlete!
-  authenticate(email: String!, password: String!): AuthToken!
+  authenticate(email: Email!, password: String!): AuthToken!
   createWorkoutScore(score: CreateScoreInput!): Score!
-  forgotPassword(email: String!): ForgotPasswordPayload!
+  forgotPassword(email: Email!): ForgotPasswordPayload!
   lockCompetitionQualifiersLeaderboards(
     competitionId: ID!
   ): [QualifiersLeaderboard]!

@@ -1,16 +1,13 @@
 const crypto = require('crypto')
 
-const { InvalidEmailError } = require('../../errors/auth')
-const { isValidEmail } = require('../../utils')
+const { IncorrectCredentialsError } = require('../../errors/auth')
 
 module.exports = {
   forgotPassword: async (root, { email }, { db, postmark }) => {
     try {
-      if (!isValidEmail(email)) throw new InvalidEmailError()
-
       const user = await db.User.findOne({ email })
 
-      if (!user) throw new InvalidEmailError()
+      if (!user) throw new IncorrectCredentialsError()
 
       const resetPasswordToken = crypto.randomBytes(20).toString('hex')
 
