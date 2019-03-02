@@ -1,13 +1,8 @@
-const {
-  IncorrectCredentialsError,
-  InvalidEmailError
-} = require('../../errors/auth')
-const { comparePassword, isValidEmail, signToken } = require('../../utils')
+const { IncorrectCredentialsError } = require('../../errors/auth')
+const { comparePassword, signToken } = require('../../utils')
 
 module.exports = {
   authenticate: async (root, { email, password }, { db }) => {
-    if (!isValidEmail(email)) throw new InvalidEmailError()
-
     const user = await db.User.findOne({ email })
 
     if (!user) throw new IncorrectCredentialsError()

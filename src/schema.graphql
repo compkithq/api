@@ -19,7 +19,7 @@ interface Leaderboard {
 
 input CompetitionRegistrationInput {
   currency: String!
-  email: String!
+  email: Email!
   leaderboard: ID!
   ticket: ID!
   token: String!
@@ -37,12 +37,13 @@ input UpdateScoreInput {
 }
 
 scalar Date
+scalar Email
 
 type RegularAthlete implements Athlete {
   id: ID!
   box: String
   dateOfBirth: Date
-  email: String
+  email: Email
   gender: ATHLETE_GENDER
   finalsLeaderboards: [FinalsLeaderboard]
   name: String
@@ -141,7 +142,7 @@ type Ticket {
 }
 
 type User {
-  email: String
+  email: Email
   isAdmin: Boolean
   name: String
 }
@@ -204,9 +205,9 @@ type Mutation {
   athleteQualifiersRegistration(
     registration: CompetitionRegistrationInput!
   ): RegularAthlete!
-  authenticate(email: String!, password: String!): AuthToken!
+  authenticate(email: Email!, password: String!): AuthToken!
   createWorkoutScore(score: CreateScoreInput!): Score!
-  forgotPassword(email: String!): ForgotPasswordPayload!
+  forgotPassword(email: Email!): ForgotPasswordPayload!
   lockCompetitionQualifiersLeaderboards(
     competitionId: ID!
   ): [QualifiersLeaderboard]!
