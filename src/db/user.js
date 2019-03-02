@@ -7,6 +7,8 @@ module.exports = mongoose.model(
     {
       email: 'String',
       name: 'String',
+      resetPasswordExpires: 'Date',
+      resetPasswordToken: 'String',
       password: 'String'
     },
     { discriminatorKey: 'kind' }

@@ -7,3 +7,7 @@ exports.IncorrectCredentialsError = createError('IncorrectAuthCredentials', {
 exports.InvalidEmailError = createError('InvalidEmailError', {
   message: 'Invalid email provided'
 })
+
+exports.InvalidResetError = createError('InvalidResetError', {
+  message: 'Password reset token is invalid or has expired'
+})
