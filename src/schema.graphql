@@ -19,7 +19,7 @@ interface Leaderboard {
 
 input CompetitionRegistrationInput {
   currency: String!
-  email: String!
+  email: Email!
   leaderboard: ID!
   ticket: ID!
   token: String!
@@ -43,7 +43,7 @@ type RegularAthlete implements Athlete {
   id: ID!
   box: String
   dateOfBirth: Date
-  email: String
+  email: Email
   gender: ATHLETE_GENDER
   finalsLeaderboards: [FinalsLeaderboard]
   name: String
@@ -142,7 +142,7 @@ type Ticket {
 }
 
 type User {
-  email: String
+  email: Email
   isAdmin: Boolean
   name: String
 }
