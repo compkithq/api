@@ -1,4 +1,4 @@
-const { and, shield } = require('graphql-shield')
+const { and, or, shield } = require('graphql-shield')
 const rules = require('./rules')
 
 module.exports = shield({
@@ -14,6 +14,10 @@ module.exports = shield({
     unlockCompetitionQualifiersLeaderboards: and(
       rules.isAuthenticated,
       rules.isAdmin
+    ),
+    updateAthleteProfile: and(
+      rules.isAuthenticated,
+      or(rules.isAdmin, rules.isMe)
     ),
     updateWorkoutScore: rules.isAuthenticated
   },

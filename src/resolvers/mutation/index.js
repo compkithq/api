@@ -8,6 +8,7 @@ const forgotPassword = require('./forgotPassword')
 const lockCompetitionLeaderboards = require('./lockCompetitionLeaderboards')
 const resetPassword = require('./resetPassword')
 const unlockCompetitionLeaderboards = require('./unlockCompetitionLeaderboards')
+const updateAthleteProfile = require('./updateAthleteProfile')
 const updateWorkoutScore = require('./updateWorkoutScore')
 
 module.exports = {
@@ -21,5 +22,6 @@ module.exports = {
   ...lockCompetitionLeaderboards,
   ...resetPassword,
   ...unlockCompetitionLeaderboards,
+  ...updateAthleteProfile,
   ...updateWorkoutScore
 }

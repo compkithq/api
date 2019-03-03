@@ -40,6 +40,11 @@ input CreateScoreInput {
   workout: ID!
 }
 
+input UpdateProfileInput {
+  box: String
+  name: String
+}
+
 input UpdateScoreInput {
   score: ID!
   value: Float
@@ -225,6 +230,10 @@ type Mutation {
   unlockCompetitionQualifiersLeaderboards(
     competitionId: ID!
   ): [QualifiersLeaderboard]!
+  updateAthleteProfile(
+    athleteId: ID!
+    profile: UpdateProfileInput!
+  ): RegularAthlete!
   updateWorkoutScore(score: UpdateScoreInput!): Score!
 }
 
