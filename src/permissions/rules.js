@@ -9,3 +9,7 @@ exports.isAdmin = rule()(async (root, args, { db, userId }) => {
 
   return kind === 'Admin'
 })
+
+exports.isMe = rule()(async (root, { athleteId }, { userId }) => {
+  return athleteId === userId
+})
