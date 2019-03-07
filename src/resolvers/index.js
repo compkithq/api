@@ -4,20 +4,13 @@ const FinalsLeaderboard = require('./query/finalsLeaderboard')
 const Query = require('./query')
 const Mutation = require('./mutation')
 const QualifiersLeaderboard = require('./query/qualifiersLeaderboard')
-const RegularAthlete = require('./query/regularAthlete')
 const Score = require('./query/score')
 const User = require('./query/user')
 const Workout = require('./query/workout')
 const Scalar = require('./scalar')
 
 module.exports = {
-  Athlete: {
-    ...Athlete,
-
-    __resolveType() {
-      return null
-    }
-  },
+  Athlete,
   Competition,
   FinalsLeaderboard,
   Leaderboard: {
@@ -27,10 +20,20 @@ module.exports = {
   },
   Query,
   QualifiersLeaderboard,
+  Me: {
+    __resolveType({ kind }) {
+      return kind
+    }
+  },
   Mutation,
-  RegularAthlete,
   ...Scalar,
   Score,
-  User,
+  User: {
+    ...User,
+
+    __resolveType() {
+      return null
+    }
+  },
   Workout
 }
