@@ -2,17 +2,17 @@ const { IncorrectCredentialsError } = require('../../errors/auth')
 const { comparePassword, signToken } = require('../../utils')
 
 module.exports = {
-  authenticate: async (root, { email, password }, { db }) => {
-    const user = await db.User.findOne({ email })
+  authenticateAthlete: async (root, { email, password }, { db }) => {
+    const athlete = await db.Athlete.findOne({ email })
 
-    if (!user) throw new IncorrectCredentialsError()
+    if (!athlete) throw new IncorrectCredentialsError()
 
-    const passwordsMatch = await comparePassword(password, user.password)
+    const passwordsMatch = await comparePassword(password, athlete.password)
 
     if (!passwordsMatch) throw new IncorrectCredentialsError()
 
     return {
-      token: await signToken({ email, id: user.id })
+      token: await signToken({ email, id: athlete.id })
     }
   }
 }
