@@ -1,12 +1,13 @@
-interface Athlete {
-  box: String
-  name: String
-  scores: [Score]
+interface User {
+  id: ID!
+  email: Email!
+  name: String!
+  isAdmin: Boolean!
 }
 
 interface Leaderboard {
   id: ID!
-  athletes: [RegularAthlete]
+  athletes: [Athlete]
   category: String
   competition: Competition
   division: LEADERBOARD_DIVISION
@@ -53,19 +54,29 @@ input UpdateScoreInput {
 scalar Date
 scalar Email
 
-type RegularAthlete implements Athlete {
+union Me = Athlete | Admin
+
+type Admin implements User {
+  id: ID!
+  email: Email!
+  isAdmin: Boolean!
+  name: String!
+}
+
+type Athlete implements User {
   id: ID!
   box: String
   dateOfBirth: Date
-  email: Email
-  gender: ATHLETE_GENDER
+  email: Email!
   finalsLeaderboards: [FinalsLeaderboard]
-  name: String
+  gender: ATHLETE_GENDER
+  isAdmin: Boolean!
+  name: String!
   qualifiersLeaderboards: [QualifiersLeaderboard]
   scores: [Score]
 }
 
-type ScoreboardAthlete implements Athlete {
+type ScoreboardAthlete {
   box: String
   name: String
   rank: Int
@@ -89,14 +100,14 @@ type Competition {
 
 type FinalsLeaderboard implements Leaderboard {
   id: ID!
-  athletes: [RegularAthlete]
+  athletes: [Athlete]
   category: String
   competition: Competition
   division: LEADERBOARD_DIVISION
   gender: ATHLETE_GENDER
   locked: Boolean
   name: String
-  qualifiedAthletes: [RegularAthlete]
+  qualifiedAthletes: [Athlete]
   tickets: [Ticket]
   workouts: [Workout]
   meta: FinalsLeaderboardMeta
@@ -109,7 +120,7 @@ type FinalsLeaderboardMeta {
 
 type QualifiersLeaderboard implements Leaderboard {
   id: ID!
-  athletes: [RegularAthlete]
+  athletes: [Athlete]
   category: String
   competition: Competition
   division: LEADERBOARD_DIVISION
@@ -127,7 +138,7 @@ type QualifiersLeaderboardMeta {
 
 type Score {
   id: ID!
-  athlete: RegularAthlete
+  athlete: Athlete
   rank: Int
   value: Float
   workout: Workout
@@ -153,12 +164,6 @@ type Ticket {
   quantity: Int
   release: TICKET_RELEASE
   type: TICKET_TYPE
-}
-
-type User {
-  email: Email
-  isAdmin: Boolean
-  name: String
 }
 
 type Venue {
@@ -187,8 +192,8 @@ type ForgotPasswordPayload {
 }
 
 type Query {
-  athletes(limit: Int, offset: Int): [RegularAthlete]
-  athlete(id: ID!): RegularAthlete
+  athletes(limit: Int, offset: Int): [Athlete]
+  athlete(id: ID!): Athlete
   competitions(limit: Int, offset: Int): [Competition]
   competition(id: ID!): Competition
   getCompetitionBySlug(slug: String!): Competition
@@ -199,7 +204,7 @@ type Query {
   ): QualifiersLeaderboard
   competitionQualifiersLeaderboards(competitionId: ID!): [QualifiersLeaderboard]
   competitionFinalsLeaderboards(competitionId: ID!): [FinalsLeaderboard]
-  me: User
+  me: Me!
   getQualifiersLeaderboardScoreboard(leaderboardId: ID!): Scoreboard
   scores(workoutId: ID!, sort: SCORES_SORT, dir: SORT_DIR): [Score]
   venues(limit: Int, offset: Int): [Venue]
@@ -215,12 +220,12 @@ type Mutation {
   ): FinalsLeaderboard
   athleteFinalsRegistration(
     registration: CompetitionRegistrationInput!
-  ): RegularAthlete!
+  ): Athlete!
   athleteQualifiersRegistration(
     registration: CompetitionRegistrationInput!
-  ): RegularAthlete!
+  ): Athlete!
   authenticate(email: Email!, password: String!): AuthToken!
-  createAthleteAccount(athlete: CreateAthleteInput!): RegularAthlete!
+  createAthleteAccount(athlete: CreateAthleteInput!): Athlete!
   createWorkoutScore(score: CreateScoreInput!): Score!
   forgotPassword(email: Email!): ForgotPasswordPayload!
   lockCompetitionQualifiersLeaderboards(
@@ -230,10 +235,7 @@ type Mutation {
   unlockCompetitionQualifiersLeaderboards(
     competitionId: ID!
   ): [QualifiersLeaderboard]!
-  updateAthleteProfile(
-    athleteId: ID!
-    profile: UpdateProfileInput!
-  ): RegularAthlete!
+  updateAthleteProfile(athleteId: ID!, profile: UpdateProfileInput!): Athlete!
   updateWorkoutScore(score: UpdateScoreInput!): Score!
 }
 

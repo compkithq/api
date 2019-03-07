@@ -17,7 +17,11 @@ const { getUserId } = require('./utils')
 
 const server = new ApolloServer({
   schema: applyMiddleware(
-    makeExecutableSchema({ typeDefs, resolvers }),
+    makeExecutableSchema({
+      typeDefs,
+      resolvers,
+      inheritResolversFromInterfaces: true
+    }),
     permissions
   ),
   context: async req => ({
