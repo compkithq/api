@@ -12,6 +12,7 @@ module.exports = mongoose.model(
       gender: 'String',
       locked: 'Boolean',
       name: 'String',
+      slug: 'String',
       tickets: [{ type: 'String' }],
       workouts: [mongoose.Schema.Types.ObjectId]
     },
