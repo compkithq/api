@@ -17,6 +17,7 @@ module.exports = mongoose.model(
     registrationEndDate: 'Date',
     registrationStartDate: 'Date',
     slug: 'String',
-    venue: mongoose.Schema.Types.ObjectId
+    tickets: [{ type: 'String' }],
+    venue: { type: Schema.Types.ObjectId, ref: 'Venue' }
   })
 )

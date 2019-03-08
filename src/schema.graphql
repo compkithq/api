@@ -42,6 +42,15 @@ input CreateScoreInput {
   workout: ID!
 }
 
+input SpectatorRegistrationInput {
+  competition: ID!
+  currency: String!
+  email: Email!
+  quantity: Int
+  ticket: ID!
+  token: String!
+}
+
 input UpdateProfileInput {
   box: String
   name: String
@@ -96,6 +105,7 @@ type Competition {
   registrationEndDate: Date
   registrationStartDate: Date
   slug: String
+  tickets: [Ticket]
   venue: Venue
 }
 
@@ -118,6 +128,10 @@ type FinalsLeaderboard implements Leaderboard {
 type FinalsLeaderboardMeta {
   athletesCount: Int!
   qualifiedAthletesCount: Int!
+}
+
+type Order {
+  id: ID!
 }
 
 type QualifiersLeaderboard implements Leaderboard {
@@ -235,6 +249,9 @@ type Mutation {
     competitionId: ID!
   ): [QualifiersLeaderboard]!
   resetPassword(password: String!, token: String!): ForgotPasswordPayload!
+  spectatorCompetitionRegistration(
+    registration: SpectatorRegistrationInput!
+  ): Order!
   unlockCompetitionQualifiersLeaderboards(
     competitionId: ID!
   ): [QualifiersLeaderboard]!
