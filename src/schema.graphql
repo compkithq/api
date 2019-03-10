@@ -54,6 +54,7 @@ input SpectatorRegistrationInput {
 input UpdateProfileInput {
   box: String
   name: String
+  size: ATHLETE_SIZE
 }
 
 input UpdateScoreInput {
@@ -84,6 +85,7 @@ type Athlete implements User {
   name: String!
   qualifiersLeaderboards: [QualifiersLeaderboard]
   scores: [Score]
+  size: ATHLETE_SIZE
 }
 
 type ScoreboardAthlete {
@@ -267,6 +269,15 @@ enum LEADERBOARD_DIVISION {
 enum ATHLETE_GENDER {
   female
   male
+}
+
+enum ATHLETE_SIZE {
+  xs
+  small
+  medium
+  large
+  xl
+  xxl
 }
 
 enum WORKOUT_TYPE {
