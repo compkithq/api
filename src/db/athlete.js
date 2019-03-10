@@ -28,6 +28,10 @@ module.exports = User.discriminator(
         { type: mongoose.Schema.Types.ObjectId, ref: 'QualifiersLeaderboard' }
       ],
       scores: [mongoose.Schema.Types.ObjectId],
+      size: {
+        enum: ['xs', 'small', 'medium', 'large', 'xl', 'xxl'],
+        type: String
+      },
       stripeID: 'String'
     },
     { discriminatorKey: 'kind' }
