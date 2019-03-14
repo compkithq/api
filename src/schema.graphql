@@ -243,6 +243,7 @@ type Mutation {
   athleteQualifiersRegistration(
     registration: CompetitionRegistrationInput!
   ): Athlete!
+  authenticateAdmin(email: Email!, password: String!): AuthToken!
   authenticateAthlete(email: Email!, password: String!): AuthToken!
   createAthleteAccount(athlete: CreateAthleteInput!): Athlete!
   createWorkoutScore(score: CreateScoreInput!): Score!
