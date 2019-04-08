@@ -21,7 +21,7 @@
     "graphql-tools": "^4.0.4",
     "jsonwebtoken": "^8.3.0",
     "lodash.keyby": "^4.6.0",
-    "mongoose": "5.4.19",
+    "mongoose": "5.5.0",
     "postmark": "^2.2.4",
     "stripe": "^6.22.0",
     "validator": "^10.7.1"
