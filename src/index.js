@@ -10,7 +10,7 @@ const db = require('./db')
 const resolvers = require('./resolvers')
 const loaders = require('./loaders')
 const permissions = require('./permissions')
-const typeDefs = importSchema('./schema.graphql'),
+const typeDefs = importSchema('./src/schema.graphql'),
 
 const { getUserId } = require('./utils')
 
