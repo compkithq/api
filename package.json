@@ -30,7 +30,7 @@
     "dotenv": "8.0.0",
     "husky": "2.2.0",
     "nodemon": "1.19.0",
-    "prettier": "1.16.4",
+    "prettier": "1.17.1",
     "pretty-quick": "1.10.0"
   },
   "husky": {
