@@ -30,10 +30,7 @@ const server = new ApolloServer({
     userId: await getUserId({ ...req })
   }),
   introspection: true,
-  playground: true,
-  engine: {
-    apiKey: process.env.ENGINE_API_KEY
-  }
+  playground: true
 })
 
 module.exports = server.createHandler({ path: '/' })
