@@ -1,5 +1,4 @@
-const { ApolloServer, gql } = require('apollo-server')
-const fs = require('fs')
+const { ApolloServer } = require('apollo-server-micro')
 const { makeExecutableSchema } = require('graphql-tools')
 const { applyMiddleware } = require('graphql-middleware')
 
@@ -10,9 +9,7 @@ const db = require('./db')
 const resolvers = require('./resolvers')
 const loaders = require('./loaders')
 const permissions = require('./permissions')
-const typeDefs = gql`
-  ${fs.readFileSync(__dirname.concat('/schema.graphql'), 'utf8')}
-`
+const typeDefs = require('./typeDefs')
 const { getUserId } = require('./utils')
 
 const server = new ApolloServer({
@@ -39,6 +36,4 @@ const server = new ApolloServer({
   }
 })
 
-server.listen().then(({ url }) => {
-  console.log(`Server is running on ${url}`)
-})
+module.exports = server.createHandler()
