@@ -11,7 +11,6 @@
   "license": "MIT",
   "dependencies": {
     "apollo-errors": "^1.9.0",
-    "apollo-server": "^2.4.0",
     "apollo-server-micro": "^2.6.1",
     "bcryptjs": "^2.4.3",
     "dataloader": "^1.4.0",
