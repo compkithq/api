@@ -16,7 +16,11 @@
   "routes": [
     {
       "src": "/.*",
-      "dest": "src/index.js"
+      "dest": "src/index.js",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type"
+      }
     }
   ],
   "version": 2

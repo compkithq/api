@@ -10,7 +10,7 @@ const resolvers = require('./resolvers')
 const loaders = require('./loaders')
 const permissions = require('./permissions')
 const typeDefs = require('./typeDefs')
-const { getUserId } = require('./utils')
+const { getUserId, withCors } = require('./utils')
 
 const server = new ApolloServer({
   schema: applyMiddleware(
@@ -33,4 +33,4 @@ const server = new ApolloServer({
   playground: true
 })
 
-module.exports = server.createHandler({ path: '/' })
+module.exports = withCors(server.createHandler({ path: '/' }))

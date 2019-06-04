@@ -34,6 +34,12 @@ exports.hashPassword = async password => {
   return bcrypt.hash(password, salt, null)
 }
 
+exports.withCors = handler => (req, res, ...args) => {
+  if (req.method === 'OPTIONS') return res.end()
+
+  return handler(req, res, ...args)
+}
+
 module.exports = {
   ...exports,
   verifyToken
