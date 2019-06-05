@@ -1,7 +1,7 @@
-const mongoose = require('./connection')
-const { Schema } = mongoose
+const mongoose = require('mongoose')
+const { model, Schema } = mongoose
 
-module.exports = mongoose.model(
+module.exports = model(
   'User',
   Schema(
     {

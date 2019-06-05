@@ -1,17 +1,17 @@
-const mongoose = require('./connection')
-const { Schema } = mongoose
+const mongoose = require('mongoose')
+const { model, Schema } = mongoose
 
-module.exports = mongoose.model(
+module.exports = model(
   'Competition',
   Schema({
     finalsDate: 'Date',
     finalsLeaderboards: [
-      { type: mongoose.Schema.Types.ObjectId, ref: 'FinalsLeaderboard' }
+      { type: Schema.Types.ObjectId, ref: 'FinalsLeaderboard' }
     ],
     name: 'String',
     qualifiersEndDate: 'Date',
     qualifiersLeaderboards: [
-      { type: mongoose.Schema.Types.ObjectId, ref: 'QualifiersLeaderboard' }
+      { type: Schema.Types.ObjectId, ref: 'QualifiersLeaderboard' }
     ],
     qualifiersStartDate: 'Date',
     registrationEndDate: 'Date',
