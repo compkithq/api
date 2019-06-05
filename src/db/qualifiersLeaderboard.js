@@ -1,4 +1,4 @@
-const mongoose = require('./connection')
+const mongoose = require('mongoose')
 const { Schema } = mongoose
 
 const Leaderboard = require('./leaderboard')

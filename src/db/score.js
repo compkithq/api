@@ -1,13 +1,13 @@
-const mongoose = require('./connection')
-const { Schema } = mongoose
+const mongoose = require('mongoose')
+const { model, Schema } = mongoose
 
-module.exports = mongoose.model(
+module.exports = model(
   'Score',
   Schema({
-    athlete: mongoose.Schema.Types.ObjectId,
+    athlete: Schema.Types.ObjectId,
     createdAt: 'Date',
     updatedAt: 'Date',
     value: 'Number',
-    workout: mongoose.Schema.Types.ObjectId
+    workout: Schema.Types.ObjectId
   })
 )
