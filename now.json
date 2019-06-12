@@ -2,7 +2,6 @@
   "alias": "graphql.firstmeanseverything.com",
   "env": {
     "JWT_PASSPHRASE": "@fme-jwt-passphrase",
-    "MONGO_URL": "@fme-mongo-url",
     "POSTMARK_KEY": "@fme-postmark-key",
     "STRIPE_KEY": "@fme-stripe-key"
   },
