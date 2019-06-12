@@ -16,7 +16,7 @@ const connectToDatabase = async uri => {
 
   if (cachedConnection) return cachedConnection
 
-  const connection = await mongoose.connect(`mongodb://${uri}`, {
+  const connection = await mongoose.connect(uri, {
     useNewUrlParser: true
   })
 
