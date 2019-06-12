@@ -33,4 +33,4 @@ const server = new ApolloServer({
   playground: true
 })
 
-module.exports = withCors(server.createHandler({ path: '/' }))
+module.exports = withCors(server.createHandler({ path: '/graphql' }))
