@@ -1,13 +1,9 @@
 {
-  "name": "fme-graphql",
-  "version": "1.0.0",
-  "description": "GraphQL API for First Means Everything",
-  "main": "src/index.js",
+  "private": true,
   "scripts": {
-    "dev": "nodemon -e js,graphql -x node -r dotenv/config src",
     "start": "node src"
   },
-  "author": "Jonathan Steele",
+  "author": "Jonathan Steele <jonathan@steele.pro> (https://steele.pro)",
   "license": "MIT",
   "dependencies": {
     "apollo-errors": "^1.9.0",
@@ -29,7 +25,6 @@
   "devDependencies": {
     "dotenv": "8.0.0",
     "husky": "2.3.0",
-    "nodemon": "1.19.1",
     "prettier": "1.17.1",
     "pretty-quick": "1.11.0"
   },

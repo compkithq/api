@@ -1,5 +1,5 @@
 {
-  "alias": "graphql.firstmeanseverything.com",
+  "alias": "api.firstmeanseverything.com",
   "env": {
     "JWT_PASSPHRASE": "@fme-jwt-passphrase",
     "POSTMARK_KEY": "@fme-postmark-key",
@@ -7,15 +7,15 @@
   },
   "builds": [
     {
-      "src": "src/index.js",
+      "src": "graphql/index.js",
       "use": "@now/node"
     }
   ],
-  "name": "fme-graphql",
+  "name": "fme-api",
   "routes": [
     {
-      "src": "/.*",
-      "dest": "src/index.js",
+      "src": "/graphql",
+      "dest": "graphql/index.js",
       "headers": {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Headers": "Content-Type"
