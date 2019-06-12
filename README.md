@@ -1,3 +1,3 @@
-# [graphql.firstmeanseverything.com](https://graphql.firstmeanseverything.com)
+# [api.firstmeanseverything.com](https://api.firstmeanseverything.com)
 
-🏁 GraphQL API for [First Means Everything](https://firstmeanseverything.com)
+🏁 API for [First Means Everything](https://firstmeanseverything.com)
