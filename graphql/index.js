@@ -5,7 +5,7 @@ const { applyMiddleware } = require('graphql-middleware')
 const postmark = require('postmark')
 const stripe = require('stripe')(process.env.STRIPE_KEY)
 
-const db = require('./db')
+const db = require('../db')
 const resolvers = require('./resolvers')
 const loaders = require('./loaders')
 const permissions = require('./permissions')
