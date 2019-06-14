@@ -1,11 +1,9 @@
 {
   "private": true,
-  "scripts": {
-    "start": "node src"
-  },
-  "author": "Jonathan Steele <jonathan@steele.pro> (https://steele.pro)",
-  "license": "MIT",
+  "name": "@firstmeanseverything/graphql",
+  "version": "1.0.0",
   "dependencies": {
+    "@firstmeanseverything/db": "*",
     "apollo-errors": "^1.9.0",
     "apollo-server-micro": "^2.6.1",
     "bcryptjs": "^2.4.3",
@@ -17,20 +15,8 @@
     "graphql-tools": "^4.0.4",
     "jsonwebtoken": "^8.3.0",
     "lodash.keyby": "^4.6.0",
-    "mongoose": "5.5.15",
     "postmark": "^2.2.4",
     "stripe": "^6.22.0",
     "validator": "^10.7.1"
-  },
-  "devDependencies": {
-    "dotenv": "8.0.0",
-    "husky": "2.4.1",
-    "prettier": "1.18.2",
-    "pretty-quick": "1.11.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
   }
 }

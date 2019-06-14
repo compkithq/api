@@ -1,0 +1,21 @@
+{
+  "private": true,
+  "author": "Jonathan Steele <jonathan@steele.pro> (https://steele.pro)",
+  "license": "MIT",
+  "workspaces": [
+    "db",
+    "graphql",
+    "handlers"
+  ],
+  "devDependencies": {
+    "dotenv": "8.0.0",
+    "husky": "2.4.1",
+    "prettier": "1.18.2",
+    "pretty-quick": "1.11.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
+}

@@ -10,11 +10,25 @@
   "builds": [
     {
       "src": "graphql/index.js",
-      "use": "@now/node"
+      "use": "@now/node@canary"
+    },
+    {
+      "src": "handlers/**/*.js",
+      "use": "@now/node@canary"
     }
   ],
 
   "routes": [
+    {
+      "src": "/competitions",
+      "dest": "handlers/competitions.js",
+      "methods": ["GET"]
+    },
+    {
+      "src": "/competitions/(?<id>[^/]+)",
+      "dest": "handlers/competition.js?id=$id",
+      "methods": ["GET"]
+    },
     {
       "src": "/(.*)",
       "dest": "graphql/index.js",

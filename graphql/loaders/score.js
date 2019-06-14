@@ -1,7 +1,6 @@
 const DataLoader = require('dataloader')
+const db = require('@firstmeanseverything/db')
 const keyBy = require('lodash.keyby')
-
-const db = require('../db')
 
 module.exports = new DataLoader(async scoreIds => {
   const scores = await db.Score.find({ _id: { $in: scoreIds } }).exec()
