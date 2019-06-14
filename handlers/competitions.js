@@ -1,4 +1,4 @@
-const db = require('../db')
+const db = require('@firstmeanseverything/db')
 
 module.exports = async (req, res) => {
   try {

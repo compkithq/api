@@ -1,7 +1,6 @@
 const DataLoader = require('dataloader')
+const db = require('@firstmeanseverything/db')
 const keyBy = require('lodash.keyby')
-
-const db = require('../../db')
 
 module.exports = new DataLoader(async competitionIds => {
   const competitions = await db.Competition.find({
