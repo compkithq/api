@@ -1,8 +1,8 @@
 {
-  "assignees": ["ynnoj"],
   "automerge": true,
   "extends": ["config:base"],
   "major": {
     "automerge": false
-  }
+  },
+  "reviewers": ["ynnoj"]
 }
