@@ -9,7 +9,7 @@
     "bcryptjs": "2.4.3",
     "dataloader": "1.4.0",
     "dayjs": "1.8.14",
-    "graphql": "14.3.1",
+    "graphql": "14.4.2",
     "graphql-middleware": "3.0.2",
     "graphql-shield": "5.3.8",
     "graphql-tools": "4.0.4",
