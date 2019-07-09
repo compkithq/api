@@ -1528,10 +1528,10 @@ please-upgrade-node@^3.1.1:
   dependencies:
     semver-compare "^1.0.0"
 
-postmark@2.2.7:
-  version "2.2.7"
-  resolved "https://registry.yarnpkg.com/postmark/-/postmark-2.2.7.tgz#8e46d77c79ac5cf5d6b1aa13258e3b7afdfb3054"
-  integrity sha512-vqDqh9/N/weyFQglewU4O2+6OLaEdibZrOyCEubyukfWz5DKUsBk3GGoU4c8P+QLk7DtiX/TAwwsXZ3bgX+fXA==
+postmark@2.2.8:
+  version "2.2.8"
+  resolved "https://registry.yarnpkg.com/postmark/-/postmark-2.2.8.tgz#49432a1b980629a40dd41c6dd66665ab8ec635d8"
+  integrity sha512-b36d6YMemkCyhlG/6yepCGwK9pX3UYeFdc2IZGq5vwFIC6+jWoO8NJdpbFDAC3eYVe7nZ8YWq9yLFeIaSRNmzw==
   dependencies:
     request "^2.88.0"
 
