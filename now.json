@@ -10,11 +10,11 @@
   "builds": [
     {
       "src": "graphql/index.js",
-      "use": "@now/node@canary"
+      "use": "@now/node"
     },
     {
       "src": "handlers/**/*.js",
-      "use": "@now/node@canary"
+      "use": "@now/node"
     }
   ],
   "regions": ["bru", "lhr"],
