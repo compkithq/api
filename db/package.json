@@ -3,6 +3,6 @@
   "name": "@firstmeanseverything/db",
   "version": "1.0.0",
   "dependencies": {
-    "mongoose": "5.6.4"
+    "mongoose": "5.6.5"
   }
 }
