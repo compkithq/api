@@ -17,6 +17,6 @@
     "lodash.keyby": "4.6.0",
     "postmark": "2.2.8",
     "stripe": "7.6.0",
-    "validator": "10.11.0"
+    "validator": "11.1.0"
   }
 }
