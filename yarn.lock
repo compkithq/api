@@ -1810,7 +1810,7 @@ run-node@^1.0.0:
   resolved "https://registry.yarnpkg.com/run-node/-/run-node-1.0.0.tgz#46b50b946a2aa2d4947ae1d886e9856fd9cabe5e"
   integrity sha512-kc120TBlQ3mih1LSzdAJXo4xn/GWS2ec0l3S+syHDXP9uRr0JAT8Qd3mdMuyjqCzeZktgP3try92cEgf9Nks8A==
 
-safe-buffer@5.1.2, safe-buffer@^5.0.1, safe-buffer@^5.1.1, safe-buffer@^5.1.2:
+safe-buffer@5.1.2, safe-buffer@^5.0.1, safe-buffer@^5.1.2:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
   integrity sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==
@@ -1955,15 +1955,12 @@ strip-eof@^1.0.0:
   resolved "https://registry.yarnpkg.com/strip-eof/-/strip-eof-1.0.0.tgz#bb43ff5598a6eb05d89b59fcd129c983313606bf"
   integrity sha1-u0P/VZim6wXYm1n80SnJgzE2Br8=
 
-stripe@6.36.0:
-  version "6.36.0"
-  resolved "https://registry.yarnpkg.com/stripe/-/stripe-6.36.0.tgz#546cb863a766674a86c02322e0d6d5d84c656fc4"
-  integrity sha512-7vjyVO4NCWvX38CH1AuSQH16uRxcQN+UhUTBPs4UHsIl5+SJXLBvCsHrMgd+bY9k1YDliT0fQB1fH9OI3GrEhw==
+stripe@7.6.0:
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/stripe/-/stripe-7.6.0.tgz#1af4eb1e491d7c727afb899d7045a55e19aef058"
+  integrity sha512-HRdRhg4r1ZfLUOY7r1SMqkteoeZE28hIAbHAIbgghnl7wft/Pvd+eD9w9yTmOy8VfGJoiCxddUyXOYYlNhkRuw==
   dependencies:
-    lodash.isplainobject "^4.0.6"
     qs "^6.6.0"
-    safe-buffer "^5.1.1"
-    uuid "^3.3.2"
 
 subscriptions-transport-ws@^0.9.11:
   version "0.9.16"
