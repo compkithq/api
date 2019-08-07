@@ -1633,10 +1633,10 @@ please-upgrade-node@^3.1.1:
   dependencies:
     semver-compare "^1.0.0"
 
-postmark@2.2.8:
-  version "2.2.8"
-  resolved "https://registry.yarnpkg.com/postmark/-/postmark-2.2.8.tgz#49432a1b980629a40dd41c6dd66665ab8ec635d8"
-  integrity sha512-b36d6YMemkCyhlG/6yepCGwK9pX3UYeFdc2IZGq5vwFIC6+jWoO8NJdpbFDAC3eYVe7nZ8YWq9yLFeIaSRNmzw==
+postmark@2.2.9:
+  version "2.2.9"
+  resolved "https://registry.yarnpkg.com/postmark/-/postmark-2.2.9.tgz#d22febd46b50406850637c558db575c5794a643e"
+  integrity sha512-tS2Z6JBbQ4GUjo/iZTq0IiPWBvzZyG5E13jUYjM9d58RiqU3ADyU+cKhlvGELgeACK3WoLOz4xm6l6/7kmQSZg==
   dependencies:
     request "^2.88.0"
 
