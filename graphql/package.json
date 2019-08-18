@@ -10,7 +10,7 @@
     "dataloader": "1.4.0",
     "dayjs": "1.8.15",
     "graphql": "14.4.2",
-    "graphql-middleware": "3.0.5",
+    "graphql-middleware": "4.0.0",
     "graphql-shield": "6.0.4",
     "graphql-tools": "4.0.5",
     "jsonwebtoken": "8.5.1",
