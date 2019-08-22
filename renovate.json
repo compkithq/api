@@ -5,5 +5,5 @@
     "automerge": false
   },
   "reviewers": ["ynnoj"],
-  "schedule": "schedule:weekly"
+  "schedule": ["schedule:weekly"]
 }
