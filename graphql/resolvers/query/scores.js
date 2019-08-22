@@ -1,5 +1,5 @@
-const calculateScoreRank = require('../../utils/calculate-score-rank')
-const scoreSortParams = require('../../utils/score-sort-params')
+const { calculateScoreRank } = require('../../utils')
+const { scoreSortParams } = require('../../utils')
 
 module.exports = {
   scores: async (root, { workoutId, sort, dir }, { db }) => {
