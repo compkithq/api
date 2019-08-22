@@ -1,5 +1,5 @@
-const calculateAthleteRank = require('../../utils/calculate-athlete-rank')
-const calculateScoreRank = require('../../utils/calculate-score-rank')
+const { calculateAthleteRank } = require('../../utils')
+const { calculateScoreRank } = require('../../utils')
 
 module.exports = {
   getQualifiersLeaderboardScoreboard: async (

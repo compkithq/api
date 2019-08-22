@@ -1,5 +1,5 @@
-const athleteCompetitionAge = require('../../utils/athlete-competition-age')
-const athleteCompetitionCategory = require('../../utils/athlete-competition-category')
+const { athleteCompetitionAge } = require('../../utils')
+const { athleteCompetitionCategory } = require('../../utils')
 
 module.exports = {
   competitionQualifiersLeaderboards: async (
