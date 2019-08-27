@@ -1,5 +1,6 @@
-# dependencies
+# Project dependencies
 node_modules
+yarn-error.log
 
-# misc
+# dotenv environment variables files
 .env*
