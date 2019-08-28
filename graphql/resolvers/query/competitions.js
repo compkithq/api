@@ -1,7 +1,9 @@
+const { InvalidIDProvided } = require('../../errors/id')
+
 module.exports = {
   competitions: async (root, { limit, offset }, { db }) => {
     try {
-      const competitions = await db.Competition.find({})
+      const competitions = await db.Competition.find()
         .limit(limit)
         .skip(offset)
         .exec()
@@ -12,21 +14,22 @@ module.exports = {
     }
   },
 
-  competition: async (root, { id }, { db }) => {
+  competition: async (root, { where }, { db }) => {
     try {
-      const competition = await db.Competition.findById(id).exec()
+      const query = Object.entries(where).reduce((accumulator, [key, val]) => {
+        const validateID = val => {
+          if (!val.match(/^[0-9a-fA-F]{24}$/)) throw new InvalidIDProvided()
 
-      return competition
-    } catch (e) {
-      return e
-    }
-  },
+          return val
+        }
 
-  getCompetitionBySlug: async (root, { slug }, { db }) => {
-    try {
-      const competition = await db.Competition.findOne({
-        slug: { $eq: slug }
-      }).exec()
+        return {
+          ...accumulator,
+          [key === 'id' ? `_id` : key]: key === 'id' ? validateID(val) : val
+        }
+      }, {})
+
+      const competition = await db.Competition.findOne(query).exec()
 
       return competition
     } catch (e) {

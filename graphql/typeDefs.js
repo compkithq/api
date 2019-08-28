@@ -45,6 +45,11 @@ module.exports = gql`
     workout: ID!
   }
 
+  input QueryWhereInput {
+    id: ID
+    slug: String
+  }
+
   input SpectatorRegistrationInput {
     competition: ID!
     currency: String!
@@ -217,8 +222,7 @@ module.exports = gql`
     athletes(limit: Int, offset: Int): [Athlete]
     athlete(id: ID!): Athlete
     competitions(limit: Int, offset: Int): [Competition]
-    competition(id: ID!): Competition
-    getCompetitionBySlug(slug: String!): Competition
+    competition(where: QueryWhereInput!): Competition
     getRelevantFinalsLeaderboards(competitionId: ID!): [FinalsLeaderboard]
     getRelevantQualifiersLeaderboard(
       competitionId: ID!
