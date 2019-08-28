@@ -3,6 +3,6 @@
   "name": "@firstmeanseverything/handlers",
   "version": "1.0.0",
   "dependencies": {
-    "@firstmeanseverything/db": "*"
+    "@firstmeanseverything/db": "1.0.0"
   }
 }
