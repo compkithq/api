@@ -11,7 +11,7 @@
     "dayjs": "1.8.16",
     "graphql": "14.5.4",
     "graphql-middleware": "4.0.0",
-    "graphql-shield": "6.0.5",
+    "graphql-shield": "6.1.0",
     "graphql-tools": "4.0.5",
     "jsonwebtoken": "8.5.1",
     "lodash.keyby": "4.6.0",
