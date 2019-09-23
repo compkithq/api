@@ -1154,10 +1154,10 @@ performance-now@^2.1.0:
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
 
-postmark@2.2.9:
-  version "2.2.9"
-  resolved "https://registry.yarnpkg.com/postmark/-/postmark-2.2.9.tgz#d22febd46b50406850637c558db575c5794a643e"
-  integrity sha512-tS2Z6JBbQ4GUjo/iZTq0IiPWBvzZyG5E13jUYjM9d58RiqU3ADyU+cKhlvGELgeACK3WoLOz4xm6l6/7kmQSZg==
+postmark@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/postmark/-/postmark-2.3.0.tgz#ab8f63d9c3fe48335b50dde798700c136b6d956c"
+  integrity sha512-bsdvYaNwJs/Fu8fAv9xvwNZNzYKmbPnHoZE+1TNrldFfZ7up9lAwlJHBXzY0RGOpsq1ly4cNXrk6d/ReoiCLSw==
   dependencies:
     request "^2.88.0"
 
