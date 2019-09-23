@@ -1347,10 +1347,10 @@ streamsearch@0.1.2:
   resolved "https://registry.yarnpkg.com/streamsearch/-/streamsearch-0.1.2.tgz#808b9d0e56fc273d809ba57338e929919a1a9f1a"
   integrity sha1-gIudDlb8Jz2Am6VzOOkpkZoanxo=
 
-stripe@7.8.0:
-  version "7.8.0"
-  resolved "https://registry.yarnpkg.com/stripe/-/stripe-7.8.0.tgz#4b21a21721cb4a20fbc5c5c97ea32bf690262ed6"
-  integrity sha512-Tmq0xB68W2e4m1FCHLly1dr6SXg+m4cXKhN77NCRkiefaetq/H2+8jDKYerY63Otd6fsRmWTVjuqy+NfUkVVwQ==
+stripe@7.9.1:
+  version "7.9.1"
+  resolved "https://registry.yarnpkg.com/stripe/-/stripe-7.9.1.tgz#05c266d48494b512b29ff89ef22e80efc14d35d3"
+  integrity sha512-8RzWlQD2/X/1YdzHtd5PYG0/GyAicxddW0TL54SIFq2ivaDoeJg3YLn9rxcmrnkmmuW8aU7yeByKjNGI8QrVxw==
   dependencies:
     qs "^6.6.0"
 
