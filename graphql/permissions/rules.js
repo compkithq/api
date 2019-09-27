@@ -10,6 +10,6 @@ exports.isAdmin = rule()(async (root, args, { db, userId }) => {
   return kind === 'Admin'
 })
 
-exports.isMe = rule()(async (root, { athleteId }, { userId }) => {
+exports.isMe = rule()(async (root, { id: athleteId }, { userId }) => {
   return athleteId === userId
 })
