@@ -22,6 +22,8 @@ module.exports = shield({
     updateWorkoutScore: rules.isAuthenticated
   },
   Query: {
+    athlete: and(rules.isAuthenticated, or(rules.isMe, rules.isAdmin)),
+    athletes: and(rules.isAuthenticated, rules.isAdmin),
     getRelevantFinalsLeaderboards: rules.isAuthenticated,
     getRelevantQualifiersLeaderboard: rules.isAuthenticated,
     me: rules.isAuthenticated
