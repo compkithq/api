@@ -21,14 +21,6 @@ module.exports = gql`
     workouts: [Workout]
   }
 
-  input CompetitionRegistrationInput {
-    currency: String!
-    email: Email!
-    leaderboard: ID!
-    ticket: ID!
-    token: String!
-  }
-
   input CreateAthleteInput {
     box: String!
     dateOfBirth: Date!
@@ -47,15 +39,6 @@ module.exports = gql`
   input QueryWhereInput {
     id: ID
     slug: String
-  }
-
-  input SpectatorRegistrationInput {
-    competition: ID!
-    currency: String!
-    email: Email!
-    quantity: Int
-    ticket: ID!
-    token: String!
   }
 
   input UpdateProfileInput {
@@ -231,12 +214,6 @@ module.exports = gql`
       leaderboardId: ID!
       athletes: [ID!]
     ): FinalsLeaderboard
-    athleteFinalsRegistration(
-      registration: CompetitionRegistrationInput!
-    ): Athlete!
-    athleteQualifiersRegistration(
-      registration: CompetitionRegistrationInput!
-    ): Athlete!
     authenticateAdmin(email: Email!, password: String!): AuthToken!
     authenticateAthlete(email: Email!, password: String!): AuthToken!
     createAthleteAccount(athlete: CreateAthleteInput!): Athlete!
@@ -246,9 +223,6 @@ module.exports = gql`
       competitionId: ID!
     ): [QualifiersLeaderboard]!
     resetPassword(password: String!, token: String!): ForgotPasswordPayload!
-    spectatorCompetitionRegistration(
-      registration: SpectatorRegistrationInput!
-    ): Order!
     unlockCompetitionQualifiersLeaderboards(
       competitionId: ID!
     ): [QualifiersLeaderboard]!
