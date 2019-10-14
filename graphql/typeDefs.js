@@ -18,7 +18,6 @@ module.exports = gql`
     locked: Boolean
     name: String
     slug: String
-    tickets: [Ticket]
     workouts: [Workout]
   }
 
@@ -115,7 +114,6 @@ module.exports = gql`
     registrationEndDate: Date
     registrationStartDate: Date
     slug: String
-    tickets: [Ticket]
     venue: Venue
   }
 
@@ -130,7 +128,6 @@ module.exports = gql`
     name: String
     qualifiedAthletes: [Athlete]
     slug: String
-    tickets: [Ticket]
     workouts: [Workout]
     meta: FinalsLeaderboardMeta
   }
@@ -154,7 +151,6 @@ module.exports = gql`
     locked: Boolean
     name: String
     slug: String
-    tickets: [Ticket]
     workouts: [Workout]
     meta: QualifiersLeaderboardMeta
   }
@@ -180,17 +176,6 @@ module.exports = gql`
   type Scoreboard {
     athletes: [ScoreboardAthlete]
     workouts: [Workout]
-  }
-
-  type Ticket {
-    id: ID!
-    active: Boolean
-    currency: String
-    name: String
-    price: Int
-    quantity: Int
-    release: TICKET_RELEASE
-    type: TICKET_TYPE
   }
 
   type Venue {
@@ -305,16 +290,5 @@ module.exports = gql`
   enum SORT_DIR {
     asc
     desc
-  }
-
-  enum TICKET_RELEASE {
-    early
-    standard
-  }
-
-  enum TICKET_TYPE {
-    bucket
-    finite
-    infinite
   }
 `

@@ -13,7 +13,6 @@ module.exports = model(
       locked: 'Boolean',
       name: 'String',
       slug: 'String',
-      tickets: [{ type: 'String' }],
       workouts: [Schema.Types.ObjectId]
     },
     { discriminatorKey: 'type' }
