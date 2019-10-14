@@ -3,7 +3,7 @@ const crypto = require('crypto')
 const { IncorrectCredentialsError } = require('../../errors/auth')
 
 module.exports = {
-  forgotPassword: async (root, { email }, { db, postmark }) => {
+  forgotPassword: async (root, { email }, { db }) => {
     try {
       const user = await db.User.findOne({ email })
 
@@ -16,19 +16,7 @@ module.exports = {
         resetPasswordExpires: Date.now() + 3600000
       })
 
-      await user.save()
-
-      await postmark.sendEmailWithTemplate({
-        From: 'team@firstmeanseverything.com',
-        TemplateId: '8579087',
-        To: email,
-        TemplateModel: {
-          name: user.name,
-          resetURL: `https://firstmeanseverything.com/reset?token=${resetPasswordToken}`
-        }
-      })
-
-      return user
+      return await user.save()
     } catch (e) {
       return e
     }

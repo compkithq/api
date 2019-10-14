@@ -4,8 +4,6 @@ const rules = require('./rules')
 module.exports = shield({
   Mutation: {
     addAthletesToFinalsLeaderboard: and(rules.isAuthenticated, rules.isAdmin),
-    athleteFinalsRegistration: rules.isAuthenticated,
-    athleteQualifiersRegistration: rules.isAuthenticated,
     createWorkoutScore: rules.isAuthenticated,
     lockCompetitionQualifiersLeaderboards: and(
       rules.isAuthenticated,

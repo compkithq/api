@@ -5,7 +5,7 @@ module.exports = {
   createAthleteAccount: async (
     root,
     { athlete: { email, name, password, ...rest } },
-    { db, postmark }
+    { db }
   ) => {
     try {
       const existingAthlete = await db.Athlete.findOne({ email })
@@ -19,19 +19,7 @@ module.exports = {
         ...rest
       })
 
-      await newAthlete.save()
-
-      await postmark.sendEmailWithTemplate({
-        From: 'team@firstmeanseverything.com',
-        TemplateId: '8578478',
-        To: email,
-        TemplateModel: {
-          email,
-          name
-        }
-      })
-
-      return newAthlete
+      return await newAthlete.save()
     } catch (e) {
       return e
     }

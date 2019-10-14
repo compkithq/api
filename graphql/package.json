@@ -15,8 +15,6 @@
     "graphql-tools": "4.0.5",
     "jsonwebtoken": "8.5.1",
     "lodash.keyby": "4.6.0",
-    "postmark": "2.3.0",
-    "stripe": "7.9.1",
     "validator": "11.1.0"
   }
 }

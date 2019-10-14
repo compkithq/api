@@ -17,7 +17,6 @@ module.exports = model(
     registrationEndDate: 'Date',
     registrationStartDate: 'Date',
     slug: 'String',
-    tickets: [{ type: 'String' }],
     venue: { type: Schema.Types.ObjectId, ref: 'Venue' }
   })
 )

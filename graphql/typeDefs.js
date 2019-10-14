@@ -18,16 +18,7 @@ module.exports = gql`
     locked: Boolean
     name: String
     slug: String
-    tickets: [Ticket]
     workouts: [Workout]
-  }
-
-  input CompetitionRegistrationInput {
-    currency: String!
-    email: Email!
-    leaderboard: ID!
-    ticket: ID!
-    token: String!
   }
 
   input CreateAthleteInput {
@@ -48,15 +39,6 @@ module.exports = gql`
   input QueryWhereInput {
     id: ID
     slug: String
-  }
-
-  input SpectatorRegistrationInput {
-    competition: ID!
-    currency: String!
-    email: Email!
-    quantity: Int
-    ticket: ID!
-    token: String!
   }
 
   input UpdateProfileInput {
@@ -115,7 +97,6 @@ module.exports = gql`
     registrationEndDate: Date
     registrationStartDate: Date
     slug: String
-    tickets: [Ticket]
     venue: Venue
   }
 
@@ -130,7 +111,6 @@ module.exports = gql`
     name: String
     qualifiedAthletes: [Athlete]
     slug: String
-    tickets: [Ticket]
     workouts: [Workout]
     meta: FinalsLeaderboardMeta
   }
@@ -154,7 +134,6 @@ module.exports = gql`
     locked: Boolean
     name: String
     slug: String
-    tickets: [Ticket]
     workouts: [Workout]
     meta: QualifiersLeaderboardMeta
   }
@@ -180,17 +159,6 @@ module.exports = gql`
   type Scoreboard {
     athletes: [ScoreboardAthlete]
     workouts: [Workout]
-  }
-
-  type Ticket {
-    id: ID!
-    active: Boolean
-    currency: String
-    name: String
-    price: Int
-    quantity: Int
-    release: TICKET_RELEASE
-    type: TICKET_TYPE
   }
 
   type Venue {
@@ -246,12 +214,6 @@ module.exports = gql`
       leaderboardId: ID!
       athletes: [ID!]
     ): FinalsLeaderboard
-    athleteFinalsRegistration(
-      registration: CompetitionRegistrationInput!
-    ): Athlete!
-    athleteQualifiersRegistration(
-      registration: CompetitionRegistrationInput!
-    ): Athlete!
     authenticateAdmin(email: Email!, password: String!): AuthToken!
     authenticateAthlete(email: Email!, password: String!): AuthToken!
     createAthleteAccount(athlete: CreateAthleteInput!): Athlete!
@@ -261,9 +223,6 @@ module.exports = gql`
       competitionId: ID!
     ): [QualifiersLeaderboard]!
     resetPassword(password: String!, token: String!): ForgotPasswordPayload!
-    spectatorCompetitionRegistration(
-      registration: SpectatorRegistrationInput!
-    ): Order!
     unlockCompetitionQualifiersLeaderboards(
       competitionId: ID!
     ): [QualifiersLeaderboard]!
@@ -305,16 +264,5 @@ module.exports = gql`
   enum SORT_DIR {
     asc
     desc
-  }
-
-  enum TICKET_RELEASE {
-    early
-    standard
-  }
-
-  enum TICKET_TYPE {
-    bucket
-    finite
-    infinite
   }
 `
