@@ -8,7 +8,7 @@
     "apollo-server-micro": "2.9.7",
     "bcryptjs": "2.4.3",
     "dataloader": "1.4.0",
-    "dayjs": "1.8.16",
+    "dayjs": "1.8.17",
     "graphql": "14.5.8",
     "graphql-middleware": "4.0.1",
     "graphql-shield": "6.1.0",
