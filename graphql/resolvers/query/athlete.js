@@ -1,4 +1,16 @@
+const dayjs = require('dayjs')
+
 module.exports = {
+  age: async ({ dateOfBirth }, args, ctx) => {
+    try {
+      const timestamp = new Date().getTime()
+
+      return dayjs(timestamp).diff(dateOfBirth, 'year')
+    } catch (e) {
+      return e
+    }
+  },
+
   finalsLeaderboards: async (
     { finalsLeaderboards: ids },
     args,
