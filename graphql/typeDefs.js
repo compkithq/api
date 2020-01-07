@@ -66,6 +66,7 @@ module.exports = gql`
 
   type Athlete implements User {
     id: ID!
+    age: Int
     box: String
     dateOfBirth: Date
     email: Email!
