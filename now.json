@@ -16,7 +16,7 @@
       "use": "@now/node"
     }
   ],
-  "regions": ["bru", "lhr"],
+  "regions": ["lhr"],
   "routes": [
     {
       "src": "/competitions",
