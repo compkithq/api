@@ -7,7 +7,7 @@
     "apollo-errors": "1.9.0",
     "apollo-server-micro": "2.9.16",
     "bcryptjs": "2.4.3",
-    "dataloader": "1.4.0",
+    "dataloader": "2.0.0",
     "dayjs": "1.8.19",
     "graphql": "14.6.0",
     "graphql-middleware": "4.0.2",
