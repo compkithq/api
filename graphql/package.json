@@ -5,7 +5,7 @@
   "dependencies": {
     "@firstmeanseverything/db": "1.0.0",
     "apollo-errors": "1.9.0",
-    "apollo-server-micro": "2.9.16",
+    "apollo-server-micro": "2.10.0",
     "bcryptjs": "2.4.3",
     "dataloader": "2.0.0",
     "dayjs": "1.8.19",
