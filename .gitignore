@@ -4,3 +4,5 @@ yarn-error.log
 
 # dotenv environment variables files
 .env*
+
+.now

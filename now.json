@@ -1,6 +1,5 @@
 {
   "alias": "api.firstmeanseverything.com",
-  "name": "api.firstmeanseverything.com",
   "version": 2,
   "env": {
     "JWT_PASSPHRASE": "@fme-jwt-passphrase",
