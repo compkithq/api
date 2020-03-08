@@ -17,7 +17,8 @@ const connectToDatabase = async uri => {
   if (cachedConnection) return cachedConnection
 
   const connection = await mongoose.connect(uri, {
-    dbName: 'fme-production',
+    dbName:
+      process.env.NODE_ENV === 'production' ? 'fme-production' : 'fme-dev',
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
