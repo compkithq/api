@@ -4,8 +4,7 @@
   "license": "MIT",
   "workspaces": [
     "db",
-    "graphql",
-    "handlers"
+    "graphql"
   ],
   "devDependencies": {
     "prettier": "1.19.1"
