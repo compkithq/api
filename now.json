@@ -2,6 +2,7 @@
   "alias": "api.firstmeanseverything.com",
   "version": 2,
   "env": {
+    "DB_NAME": "@fme-db-name",
     "JWT_PASSPHRASE": "@fme-jwt-passphrase",
     "MONGO_URL": "@fme-mongo-url"
   },
