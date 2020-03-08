@@ -1,5 +1,5 @@
 const DataLoader = require('dataloader')
-const db = require('@firstmeanseverything/db')
+const db = require('./db')
 const keyBy = require('lodash.keyby')
 
 module.exports = new DataLoader(async scoreIds => {

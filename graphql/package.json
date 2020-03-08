@@ -3,7 +3,6 @@
   "name": "@firstmeanseverything/graphql",
   "version": "1.0.0",
   "dependencies": {
-    "@firstmeanseverything/db": "1.0.0",
     "apollo-errors": "1.9.0",
     "apollo-server-micro": "2.11.0",
     "bcryptjs": "2.4.3",

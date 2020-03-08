@@ -1,5 +1,5 @@
 const { ApolloServer } = require('apollo-server-micro')
-const db = require('@firstmeanseverything/db')
+const db = require('./db')
 const { makeExecutableSchema } = require('graphql-tools')
 const { applyMiddleware } = require('graphql-middleware')
 
