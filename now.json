@@ -1,5 +1,6 @@
 {
   "alias": "api.firstmeanseverything.com",
+  "scope": "firstmeanseverything",
   "version": 2,
   "env": {
     "JWT_PASSPHRASE": "@fme-jwt-passphrase",
@@ -9,24 +10,10 @@
     {
       "src": "graphql/index.js",
       "use": "@now/node"
-    },
-    {
-      "src": "handlers/**/*.js",
-      "use": "@now/node"
     }
   ],
   "regions": ["lhr"],
   "routes": [
-    {
-      "src": "/competitions",
-      "dest": "handlers/competitions.js",
-      "methods": ["GET"]
-    },
-    {
-      "src": "/competitions/(?<id>[^/]+)",
-      "dest": "handlers/competition.js?id=$id",
-      "methods": ["GET"]
-    },
     {
       "src": "/(.*)",
       "dest": "graphql/index.js",
