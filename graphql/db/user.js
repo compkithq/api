@@ -1,7 +1,6 @@
-const mongoose = require('mongoose')
-const { model, Schema } = mongoose
+const { model, Schema } = require('mongoose')
 
-module.exports = model(
+const User = model(
   'User',
   Schema(
     {
@@ -26,3 +25,5 @@ module.exports = model(
     { discriminatorKey: 'kind' }
   )
 )
+
+module.exports = { User }

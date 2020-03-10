@@ -1,7 +1,6 @@
-const mongoose = require('mongoose')
-const { model, Schema } = mongoose
+const { model, Schema } = require('mongoose')
 
-module.exports = model(
+const Leaderboard = model(
   'Leaderboard',
   Schema(
     {
@@ -18,3 +17,5 @@ module.exports = model(
     { discriminatorKey: 'type' }
   )
 )
+
+module.exports = { Leaderboard }

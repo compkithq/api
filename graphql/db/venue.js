@@ -1,7 +1,8 @@
-const mongoose = require('mongoose')
-const { model, Schema } = mongoose
+const { model, Schema } = require('mongoose')
+const DataLoader = require('dataloader')
+const keyBy = require('lodash.keyby')
 
-module.exports = model(
+const Venue = model(
   'Venue',
   Schema({
     address: 'String',
@@ -10,3 +11,16 @@ module.exports = model(
     name: 'String'
   })
 )
+
+const venueLoader = () =>
+  new DataLoader(async venueIds => {
+    const venues = await Venue.find({ _id: { $in: venueIds } }).exec()
+    const venuesById = keyBy(venues, '_id')
+
+    return venueIds.map(venueId => venuesById[venueId])
+  })
+
+module.exports = {
+  Venue,
+  venueLoader
+}

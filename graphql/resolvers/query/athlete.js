@@ -14,10 +14,10 @@ module.exports = {
   finalsLeaderboards: async (
     { finalsLeaderboards: ids },
     args,
-    { loaders: { leaderboardLoader } }
+    { loaders: { finalsLeaderboardLoader } }
   ) => {
     try {
-      const leaderboards = await leaderboardLoader.loadMany(ids)
+      const leaderboards = await finalsLeaderboardLoader.loadMany(ids)
 
       return leaderboards
     } catch (e) {
@@ -28,10 +28,10 @@ module.exports = {
   qualifiersLeaderboards: async (
     { qualifiersLeaderboards: ids },
     args,
-    { loaders: { leaderboardLoader } }
+    { loaders: { qualifiersLeaderboardLoader } }
   ) => {
     try {
-      const leaderboards = await leaderboardLoader.loadMany(ids)
+      const leaderboards = await qualifiersLeaderboardLoader.loadMany(ids)
 
       return leaderboards
     } catch (e) {
