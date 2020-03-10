@@ -1,9 +1,10 @@
-const mongoose = require('mongoose')
-const { Schema } = mongoose
+const { Schema } = require('mongoose')
+const DataLoader = require('dataloader')
+const keyBy = require('lodash.keyby')
 
-const User = require('./user')
+const { User } = require('./user')
 
-module.exports = User.discriminator(
+const Athlete = User.discriminator(
   'Athlete',
   Schema(
     {
@@ -37,3 +38,15 @@ module.exports = User.discriminator(
     { discriminatorKey: 'kind' }
   )
 )
+
+const athleteLoader = () =>
+  new DataLoader(async athleteIds => {
+    const athletes = await Athlete.find({
+      _id: { $in: athleteIds }
+    }).exec()
+    const athletesById = keyBy(athletes, '_id')
+
+    return athleteIds.map(athleteId => athletesById[athleteId])
+  })
+
+module.exports = { Athlete, athleteLoader }

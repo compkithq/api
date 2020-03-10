@@ -1,7 +1,8 @@
-const mongoose = require('mongoose')
-const { model, Schema } = mongoose
+const { model, Schema } = require('mongoose')
+const DataLoader = require('dataloader')
+const keyBy = require('lodash.keyby')
 
-module.exports = model(
+const Competition = model(
   'Competition',
   Schema({
     finalsDate: 'Date',
@@ -20,3 +21,18 @@ module.exports = model(
     venue: { type: Schema.Types.ObjectId, ref: 'Venue' }
   })
 )
+
+const competitionLoader = () =>
+  new DataLoader(async competitionIds => {
+    const competitions = await Competition.find({
+      _id: { $in: competitionIds }
+    }).exec()
+    const competitionsById = keyBy(competitions, '_id')
+
+    return competitionIds.map(competitionId => competitionsById[competitionId])
+  })
+
+module.exports = {
+  Competition,
+  competitionLoader
+}

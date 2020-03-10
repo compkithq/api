@@ -1,7 +1,8 @@
-const mongoose = require('mongoose')
-const { model, Schema } = mongoose
+const { model, Schema } = require('mongoose')
+const DataLoader = require('dataloader')
+const keyBy = require('lodash.keyby')
 
-module.exports = model(
+const Score = model(
   'Score',
   Schema({
     athlete: Schema.Types.ObjectId,
@@ -11,3 +12,13 @@ module.exports = model(
     workout: Schema.Types.ObjectId
   })
 )
+
+const scoreLoader = () =>
+  new DataLoader(async scoreIds => {
+    const scores = await Score.find({ _id: { $in: scoreIds } }).exec()
+    const scoresById = keyBy(scores, '_id')
+
+    return scoreIds.map(scoreId => scoresById[scoreId])
+  })
+
+module.exports = { Score, scoreLoader }

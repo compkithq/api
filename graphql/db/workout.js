@@ -1,7 +1,8 @@
-const mongoose = require('mongoose')
-const { model, Schema } = mongoose
+const { model, Schema } = require('mongoose')
+const DataLoader = require('dataloader')
+const keyBy = require('lodash.keyby')
 
-module.exports = model(
+const Workout = model(
   'Workout',
   Schema({
     description: 'String',
@@ -12,3 +13,13 @@ module.exports = model(
     type: 'String'
   })
 )
+
+const workoutLoader = () =>
+  new DataLoader(async workoutIds => {
+    const workouts = await Workout.find({ _id: { $in: workoutIds } }).exec()
+    const workoutsById = keyBy(workouts, '_id')
+
+    return workoutIds.map(workoutId => workoutsById[workoutId])
+  })
+
+module.exports = { Workout, workoutLoader }
