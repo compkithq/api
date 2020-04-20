@@ -14,7 +14,7 @@
     "graphql-tools": "4.0.8",
     "jsonwebtoken": "8.5.1",
     "lodash.keyby": "4.6.0",
-    "mongoose": "5.9.7",
+    "mongoose": "5.9.9",
     "validator": "12.2.0"
   },
   "devDependencies": {
