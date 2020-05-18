@@ -4,7 +4,7 @@
   "license": "MIT",
   "dependencies": {
     "apollo-errors": "1.9.0",
-    "apollo-server-micro": "2.13.0",
+    "apollo-server-micro": "2.13.1",
     "bcryptjs": "2.4.3",
     "dataloader": "2.0.0",
     "dayjs": "1.8.26",
