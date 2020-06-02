@@ -2,6 +2,10 @@
   "private": true,
   "author": "Jonathan Steele <jonathan@steele.pro> (https://steele.pro)",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon graphql/index.js",
+    "start": "node graphql/index.js"
+  },
   "dependencies": {
     "apollo-errors": "1.9.0",
     "apollo-server": "2.14.1",
@@ -18,6 +22,7 @@
     "validator": "13.0.0"
   },
   "devDependencies": {
+    "nodemon": "2.0.4",
     "prettier": "2.0.5"
   },
   "engines": {
