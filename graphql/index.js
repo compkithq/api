@@ -18,7 +18,7 @@ const server = new ApolloServer({
     }),
     permissions
   ),
-  context: async req => ({
+  context: async (req) => ({
     ...req,
     db,
     loaders,

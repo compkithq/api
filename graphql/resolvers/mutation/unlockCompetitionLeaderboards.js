@@ -7,7 +7,7 @@ module.exports = {
     try {
       const { qualifiersLeaderboards } = await db.Competition.findById(id)
 
-      return qualifiersLeaderboards.map(async leaderboard => {
+      return qualifiersLeaderboards.map(async (leaderboard) => {
         return await db.QualifiersLeaderboard.findByIdAndUpdate(
           leaderboard,
           {

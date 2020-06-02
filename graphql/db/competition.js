@@ -23,13 +23,15 @@ const Competition = model(
 )
 
 const competitionLoader = () =>
-  new DataLoader(async competitionIds => {
+  new DataLoader(async (competitionIds) => {
     const competitions = await Competition.find({
       _id: { $in: competitionIds }
     }).exec()
     const competitionsById = keyBy(competitions, '_id')
 
-    return competitionIds.map(competitionId => competitionsById[competitionId])
+    return competitionIds.map(
+      (competitionId) => competitionsById[competitionId]
+    )
   })
 
 module.exports = {

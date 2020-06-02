@@ -40,13 +40,13 @@ const Athlete = User.discriminator(
 )
 
 const athleteLoader = () =>
-  new DataLoader(async athleteIds => {
+  new DataLoader(async (athleteIds) => {
     const athletes = await Athlete.find({
       _id: { $in: athleteIds }
     }).exec()
     const athletesById = keyBy(athletes, '_id')
 
-    return athleteIds.map(athleteId => athletesById[athleteId])
+    return athleteIds.map((athleteId) => athletesById[athleteId])
   })
 
 module.exports = { Athlete, athleteLoader }

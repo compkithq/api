@@ -17,7 +17,7 @@ module.exports = {
   competition: async (root, { where }, { db }) => {
     try {
       const query = Object.entries(where).reduce((accumulator, [key, val]) => {
-        const validateID = val => {
+        const validateID = (val) => {
           if (!val.match(/^[0-9a-fA-F]{24}$/)) throw new InvalidIDProvided()
 
           return val
