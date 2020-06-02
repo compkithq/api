@@ -16,10 +16,10 @@ module.exports = {
         leaderboard: { $eq: leaderboardId }
       }).exec()
 
-      const buildAthletes = leaderboardAthletes.map(async athlete => {
+      const buildAthletes = leaderboardAthletes.map(async (athlete) => {
         const { scores, ...rest } = athlete.toObject({ virtuals: true })
 
-        const buildScores = leaderboardWorkouts.map(async workout => {
+        const buildScores = leaderboardWorkouts.map(async (workout) => {
           const athleteScore = await db.Score.findOne({
             workout: { $eq: workout._id },
             athlete: { $eq: athlete._id }
@@ -64,7 +64,7 @@ module.exports = {
 
       return {
         athletes: mappedAthletes
-          .map(athlete => ({
+          .map((athlete) => ({
             ...athlete,
             rank: calculateAthleteRank({
               athletes: mappedAthletes,

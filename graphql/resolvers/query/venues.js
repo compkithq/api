@@ -1,10 +1,7 @@
 module.exports = {
   venues: async (root, { limit, offset }, { db }) => {
     try {
-      const venues = await db.Venue.find({})
-        .limit(limit)
-        .skip(offset)
-        .exec()
+      const venues = await db.Venue.find({}).limit(limit).skip(offset).exec()
 
       return venues
     } catch (e) {

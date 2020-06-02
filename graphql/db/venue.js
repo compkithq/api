@@ -13,11 +13,11 @@ const Venue = model(
 )
 
 const venueLoader = () =>
-  new DataLoader(async venueIds => {
+  new DataLoader(async (venueIds) => {
     const venues = await Venue.find({ _id: { $in: venueIds } }).exec()
     const venuesById = keyBy(venues, '_id')
 
-    return venueIds.map(venueId => venuesById[venueId])
+    return venueIds.map((venueId) => venuesById[venueId])
   })
 
 module.exports = {

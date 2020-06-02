@@ -15,11 +15,11 @@ const Workout = model(
 )
 
 const workoutLoader = () =>
-  new DataLoader(async workoutIds => {
+  new DataLoader(async (workoutIds) => {
     const workouts = await Workout.find({ _id: { $in: workoutIds } }).exec()
     const workoutsById = keyBy(workouts, '_id')
 
-    return workoutIds.map(workoutId => workoutsById[workoutId])
+    return workoutIds.map((workoutId) => workoutsById[workoutId])
   })
 
 module.exports = { Workout, workoutLoader }

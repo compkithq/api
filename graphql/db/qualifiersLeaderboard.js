@@ -10,13 +10,15 @@ const QualifiersLeaderboard = Leaderboard.discriminator(
 )
 
 const qualifiersLeaderboardLoader = () =>
-  new DataLoader(async leaderboardIds => {
+  new DataLoader(async (leaderboardIds) => {
     const leaderboards = await QualifiersLeaderboard.find({
       _id: { $in: leaderboardIds }
     }).exec()
     const leaderboardsById = keyBy(leaderboards, '_id')
 
-    return leaderboardIds.map(leaderboardId => leaderboardsById[leaderboardId])
+    return leaderboardIds.map(
+      (leaderboardId) => leaderboardsById[leaderboardId]
+    )
   })
 
 module.exports = {

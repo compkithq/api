@@ -14,11 +14,11 @@ const Score = model(
 )
 
 const scoreLoader = () =>
-  new DataLoader(async scoreIds => {
+  new DataLoader(async (scoreIds) => {
     const scores = await Score.find({ _id: { $in: scoreIds } }).exec()
     const scoresById = keyBy(scores, '_id')
 
-    return scoreIds.map(scoreId => scoresById[scoreId])
+    return scoreIds.map((scoreId) => scoresById[scoreId])
   })
 
 module.exports = { Score, scoreLoader }

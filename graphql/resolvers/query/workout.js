@@ -12,7 +12,7 @@ module.exports = {
         .sort(scoreSortParams({ sort, dir, workoutType }))
         .exec()
 
-      return scores.map(score => ({
+      return scores.map((score) => ({
         ...score.toObject({ virtuals: true }),
         rank: calculateScoreRank({
           scores,

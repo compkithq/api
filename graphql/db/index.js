@@ -11,7 +11,7 @@ const { User } = require('./user')
 const { Venue } = require('./venue')
 const { Workout } = require('./workout')
 
-const connectToDatabase = async uri => {
+const connectToDatabase = async (uri) => {
   let cachedConnection
 
   if (cachedConnection) return cachedConnection

@@ -8,12 +8,12 @@ const { JWT_PASSPHRASE } = process.env
 exports.comparePassword = async (current, target) =>
   await bcrypt.compare(current, target)
 
-exports.isValidEmail = email => isEmail(email)
+exports.isValidEmail = (email) => isEmail(email)
 
-exports.signToken = async user =>
+exports.signToken = async (user) =>
   await jwt.sign(user, JWT_PASSPHRASE, { expiresIn: '1d' })
 
-verifyToken = async token => await jwt.verify(token, JWT_PASSPHRASE)
+verifyToken = async (token) => await jwt.verify(token, JWT_PASSPHRASE)
 
 exports.getUserId = async ({ req }) => {
   try {
@@ -29,13 +29,13 @@ exports.getUserId = async ({ req }) => {
   }
 }
 
-exports.hashPassword = async password => {
+exports.hashPassword = async (password) => {
   const salt = await bcrypt.genSalt(5)
 
   return bcrypt.hash(password, salt, null)
 }
 
-exports.withCors = handler => (req, res, ...args) => {
+exports.withCors = (handler) => (req, res, ...args) => {
   if (req.method === 'OPTIONS') return res.end()
 
   return handler(req, res, ...args)
@@ -59,7 +59,7 @@ exports.athleteCompetitionCategory = ({ age }) => {
 
 exports.calculateAthleteRank = ({ athletes, total }) => {
   const totalValues = athletes
-    .map(athlete => athlete.total)
+    .map((athlete) => athlete.total)
     .sort((a, b) => {
       return a - b
     })
@@ -90,7 +90,9 @@ exports.calculateScoreRank = ({ scores, score, workoutType }) => {
       return b.value - a.value
     })
 
-  const currentScoreIndex = scoreValues.map(score => score.value).indexOf(score)
+  const currentScoreIndex = scoreValues
+    .map((score) => score.value)
+    .indexOf(score)
   const previousScoreIndex = scoreValues[currentScoreIndex - 1]
 
   if (!previousScoreIndex) return currentScoreIndex + 1
