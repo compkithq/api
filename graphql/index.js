@@ -1,4 +1,4 @@
-const { ApolloServer } = require('apollo-server-micro')
+const { ApolloServer } = require('apollo-server')
 const db = require('./db')
 const { makeExecutableSchema } = require('graphql-tools')
 const { applyMiddleware } = require('graphql-middleware')
@@ -28,4 +28,6 @@ const server = new ApolloServer({
   playground: true
 })
 
-module.exports = withCors(server.createHandler({ path: '/graphql' }))
+server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
+  console.log(`🚀 Server ready at ${url}`)
+})
