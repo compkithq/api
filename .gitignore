@@ -2,7 +2,5 @@
 node_modules
 yarn-error.log
 
-# dotenv environment variables files
-.env*
-
-.now
+# dotenv
+.env

@@ -3,8 +3,8 @@
   "author": "Jonathan Steele <jonathan@steele.pro> (https://steele.pro)",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon graphql/index.js",
-    "start": "node graphql/index.js"
+    "dev": "nodemon api/index.js",
+    "start": "node api/index.js"
   },
   "dependencies": {
     "apollo-errors": "1.9.0",
