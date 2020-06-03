@@ -1,8 +1,8 @@
 const { ApolloServer } = require('apollo-server')
-const db = require('./db')
 const { makeExecutableSchema } = require('graphql-tools')
 const { applyMiddleware } = require('graphql-middleware')
 
+const db = require('../db')
 const resolvers = require('./resolvers')
 const loaders = require('./loaders')
 const permissions = require('./permissions')
