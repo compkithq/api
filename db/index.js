@@ -11,25 +11,11 @@ const { User } = require('./user')
 const { Venue } = require('./venue')
 const { Workout } = require('./workout')
 
-const connectToDatabase = async (uri) => {
-  let cachedConnection
-
-  if (cachedConnection) return cachedConnection
-
-  const connection = await mongoose.connect(uri, {
-    dbName: 'fme-production',
-    // dbName:
-    //   process.env.NODE_ENV === 'production' ? 'fme-production' : 'fme-dev',
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
-
-  cachedConnection = connection
-
-  return connection
-}
-
-connectToDatabase(process.env.MONGO_URL)
+mongoose.connect(process.env.MONGO_URL, {
+  dbName: 'fme-production',
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
 
 module.exports = {
   Admin,
