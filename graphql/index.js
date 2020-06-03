@@ -7,7 +7,7 @@ const resolvers = require('./resolvers')
 const loaders = require('./loaders')
 const permissions = require('./permissions')
 const typeDefs = require('./typeDefs')
-const { getUserId, withCors } = require('./utils')
+const { getUserId } = require('./utils')
 
 const server = new ApolloServer({
   schema: applyMiddleware(
